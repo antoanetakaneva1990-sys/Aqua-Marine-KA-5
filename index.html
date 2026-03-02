@@ -3,18 +3,25 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Luxury Apartment Nea Peramos</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Marck+Script&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet">
+<title>Apartment Nea Peramos</title>
 
 <style>
 body{
     margin:0;
     background:#ECECE6; /* RAL 9002 */
-    font-family:'Marck Script', cursive;
+    font-family: Arial, sans-serif;
     font-size:18px;
     color:#222;
+}
+
+header{
+    text-align:center;
+    padding:30px 15px 10px 15px;
+}
+
+h1{
+    margin:0;
+    font-weight:600;
 }
 
 .container{
@@ -23,44 +30,35 @@ body{
     padding:20px;
 }
 
-h1{
-    text-align:center;
-    font-family:'Playfair Display', serif;
-    font-size:40px;
-    margin-top:30px;
-}
-
-.section-title{
-    font-family:'Playfair Display', serif;
-    font-weight:600;
-    font-size:26px;
-    color:#000;
-    text-transform:uppercase;
-    margin-top:40px;
-}
-
-.lang{
+.lang-buttons{
     text-align:center;
     margin:20px 0;
 }
 
-.lang button{
-    padding:10px 20px;
+.lang-buttons button{
+    padding:8px 16px;
     margin:5px;
     border:none;
     border-radius:8px;
-    background:#1f2a44;
+    background:#333;
     color:#fff;
     cursor:pointer;
 }
 
+.lang-buttons button:hover{
+    background:#555;
+}
+
+/* Gallery */
+
 .gallery{
     position:relative;
+    margin-bottom:30px;
 }
 
 .gallery img{
     width:100%;
-    border-radius:14px;
+    border-radius:12px;
     display:none;
 }
 
@@ -72,143 +70,130 @@ h1{
     position:absolute;
     top:50%;
     transform:translateY(-50%);
-    background:rgba(0,0,0,0.45);
+    font-size:28px;
+    background:rgba(0,0,0,0.4);
     color:#fff;
-    font-size:30px;
-    padding:6px 14px;
+    padding:6px 12px;
     border-radius:50%;
     cursor:pointer;
     user-select:none;
 }
 
-.left{ left:10px; }
-.right{ right:10px; }
+.arrow.left{ left:10px; }
+.arrow.right{ right:10px; }
 
-.box{
-    background:#fff;
-    padding:22px;
-    border-radius:14px;
-    margin-top:20px;
+.section{
+    margin-bottom:30px;
 }
 
-button.pay{
-    background:#c6a46c;
-    color:#fff;
-    font-size:18px;
-    padding:14px 26px;
+.price-box, .booking-box{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+}
+
+input{
+    padding:8px;
+    margin:5px;
+    font-size:16px;
+}
+
+.pay-btn{
+    margin-top:20px;
+    padding:12px 22px;
     border:none;
-    border-radius:10px;
+    border-radius:8px;
+    background:#333;
+    color:#fff;
     cursor:pointer;
 }
 
-.map{
-    width:100%;
-    height:400px;
-    border:0;
-    border-radius:14px;
+.pay-btn:hover{
+    background:#555;
 }
 </style>
 </head>
 
 <body>
 
+<header>
+<h1 
+data-bg="Луксозен апартамент – Неа Перамос"
+data-en="Luxury Apartment – Nea Peramos">
+Луксозен апартамент – Неа Перамос
+</h1>
+</header>
+
 <div class="container">
 
-<h1 data-bg="ЛУКСОЗЕН АПАРТАМЕНТ – НЕА ПЕРАМОС"
-    data-en="LUXURY APARTMENT – NEA PERAMOS">
-ЛУКСОЗЕН АПАРТАМЕНТ – НЕА ПЕРАМОС
-</h1>
-
-<div class="lang">
-<button onclick="setLang('bg')">Български</button>
-<button onclick="setLang('en')">English</button>
+<div class="lang-buttons">
+<button onclick="setLang('bg')">BG</button>
+<button onclick="setLang('en')">EN</button>
 </div>
 
-<!-- ГАЛЕРИЯ -->
+<!-- ГАЛЕРИЯ С ТВОИТЕ СНИМКИ -->
 
 <div class="gallery">
 <div class="arrow left" onclick="prevImg()">❮</div>
 <div class="arrow right" onclick="nextImg()">❯</div>
 
-<img src="644AE9AE-8FED-4B40-A01E-920C312CFDD4.jpeg" class="active">
-<img src="85E38FA5-BB99-4CB0-8DF5-F9524C0476E3.jpeg">
+<img src="644AE9AE-8FED-4B40-A01E-920C312CFDD4.jpeg" class="active" alt="">
+<img src="85E38FA5-BB99-4CB0-8DF5-F9524C0476E3.jpeg" alt="">
+
 </div>
 
 <!-- ОПИСАНИЕ -->
 
-<div class="section-title"
-data-bg="ЗА АПАРТАМЕНТА"
-data-en="ABOUT THE APARTMENT">
-ЗА АПАРТАМЕНТА
-</div>
-
-<div class="box"
-data-bg="Потопете се в комфорт, стил и спокойствие. Апартаментът разполага със собствено паркомясто, просторни помещения и всичко необходимо за една безупречна почивка. Локацията е стратегическа — на около 2 км от яхтеното пристанище на Ираклица (около минута и половина с автомобил) и с бърз достъп до тюркоазените води на емблематичните плажове Амолофи."
-data-en="Immerse yourself in comfort, style and tranquility. The apartment offers private parking, spacious rooms and everything needed for a flawless holiday. The location is strategic — about 2 km from the Iraklitsa marina (around 1.5 minutes by car) with quick access to the turquoise waters of the iconic Ammolofi beaches.">
-Потопете се в комфорт, стил и спокойствие...
+<div class="section"
+data-bg="Апартаментът се намира на около 2 км от яхтеното пристанище на Ираклица (около минута и половина с автомобил), което го прави отличен избор както за почивка в Неа Перамос, така и за гости, които желаят бърз достъп до Ираклица. В същото време сте в близост до тюркоазените води на емблематичните плажове Амолофи."
+data-en="The apartment is located about 2 km from the Iraklitsa marina (around one and a half minutes by car), making it a perfect choice both for Nea Peramos holidays and for guests who want quick access to Iraklitsa. At the same time, you are close to the turquoise waters of the iconic Ammolofi beaches.">
+Апартаментът се намира на около 2 км от яхтеното пристанище на Ираклица...
 </div>
 
 <!-- ЦЕНИ -->
 
-<div class="section-title"
-data-bg="ЦЕНИ"
-data-en="PRICES">
-ЦЕНИ
+<div class="section price-box">
+<div 
+data-bg="Под 5 нощувки: 160€ / нощ"
+data-en="Less than 5 nights: 160€ / night">
+Под 5 нощувки: 160€ / нощ
 </div>
-
-<div class="box">
-<div data-bg="Под 5 нощувки: 160€ / нощ"
-     data-en="Less than 5 nights: 160€ / night"></div>
-<div data-bg="5+ нощувки: 150€ / нощ"
-     data-en="5+ nights: 150€ / night"></div>
+<div 
+data-bg="5+ нощувки: 150€ / нощ"
+data-en="5+ nights: 150€ / night">
+5+ нощувки: 150€ / нощ
+</div>
 </div>
 
 <!-- РЕЗЕРВАЦИЯ -->
 
-<div class="section-title"
-data-bg="РЕЗЕРВАЦИЯ"
-data-en="BOOKING">
-РЕЗЕРВАЦИЯ
-</div>
-
-<div class="box">
-<label data-bg="От:" data-en="From:"></label>
+<div class="section booking-box">
+<label data-bg="От:" data-en="From:">От:</label>
 <input type="date" id="dateFrom">
 
-<label data-bg="Нощувки:" data-en="Nights:"></label>
+<label data-bg="Нощувки:" data-en="Nights:">Нощувки:</label>
 <input type="number" id="nights" min="1" value="1">
 
 <button onclick="calcPrice()">OK</button>
+
 <p id="result"></p>
 </div>
 
-<!-- КАРТА -->
-
-<iframe class="map"
-src="https://maps.google.com/maps?q=40.8517289,24.3140363&z=15&output=embed">
-</iframe>
-
 <!-- КОНТАКТИ -->
 
-<div class="section-title"
-data-bg="КОНТАКТИ"
-data-en="CONTACTS">
-КОНТАКТИ
+<div class="section">
+<h2 data-bg="Контакти" data-en="Contacts">Контакти</h2>
+<p>📞 +359 XXX XXX XXX</p>
+<p>📧 your@email.com</p>
+<p><a href="#" target="_blank">Facebook</a></p>
 </div>
 
-<div class="box">
-📞 +359 XXX XXX XXX<br>
-📧 your@email.com<br>
-<a href="#">Facebook</a>
-</div>
-
-<!-- ПЛАЩАНЕ -->
-
-<div style="text-align:center;margin:40px 0;">
-<button class="pay"
-onclick="window.location.href='https://buy.stripe.com/test_00g8wQ3Xw5vQ9AkdQQ'">
-<span data-bg="ПЛАТИ ДЕПОЗИТ 20%"
-      data-en="PAY 20% DEPOSIT"></span>
+<div style="text-align:center;">
+<button class="pay-btn">
+<span data-bg="Плати депозит 20%"
+      data-en="Pay 20% deposit">
+Плати депозит 20%
+</span>
 </button>
 </div>
 
@@ -216,20 +201,20 @@ onclick="window.location.href='https://buy.stripe.com/test_00g8wQ3Xw5vQ9AkdQQ'">
 
 <script>
 let current=0;
-const imgs=document.querySelectorAll('.gallery img');
+const images=document.querySelectorAll('.gallery img');
 
-function showImg(i){
-    imgs.forEach(x=>x.classList.remove('active'));
-    imgs[i].classList.add('active');
+function showImg(index){
+    images.forEach(img=>img.classList.remove('active'));
+    images[index].classList.add('active');
 }
 
 function nextImg(){
-    current=(current+1)%imgs.length;
+    current=(current+1)%images.length;
     showImg(current);
 }
 
 function prevImg(){
-    current=(current-1+imgs.length)%imgs.length;
+    current=(current-1+images.length)%images.length;
     showImg(current);
 }
 
@@ -240,9 +225,9 @@ function setLang(lang){
 }
 
 function calcPrice(){
-    const n=Number(document.getElementById('nights').value);
-    const price=n>=5?150:160;
-    const total=n*price;
+    const nights=Number(document.getElementById('nights').value);
+    const price=nights>=5?150:160;
+    const total=nights*price;
     document.getElementById('result').innerText="Общо: "+total+"€";
 }
 </script>
