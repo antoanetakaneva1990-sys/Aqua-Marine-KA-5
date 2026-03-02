@@ -43,6 +43,10 @@ header p{
   margin:15px 0;
 }
 
+.lang-switch button{
+  margin:0 5px;
+}
+
 .container{
   max-width:1150px;
   margin:auto;
@@ -80,7 +84,10 @@ button{
   border-radius:8px;
   cursor:pointer;
   font-size:15px;
+  transition:transform 0.3s;
 }
+
+button:hover{ transform:scale(1.05); }
 
 .input-field{
   margin-bottom:10px;
@@ -107,9 +114,7 @@ button{
   transition:transform 0.3s;
 }
 
-.gallery img:hover{
-  transform:scale(1.05);
-}
+.gallery img:hover{ transform:scale(1.05); }
 
 #lightbox{
   position:fixed;
@@ -136,6 +141,22 @@ button{
 }
 
 @keyframes fadeIn{ to{opacity:1;} }
+
+/* Responsive */
+@media (max-width:768px){
+  header h1{ font-size:2.5rem; }
+  header p{ font-size:1rem; }
+  .gallery img{ height:140px; }
+  .card{ padding:20px; }
+  h2{ font-size:1.7rem; }
+}
+
+@media (max-width:480px){
+  header h1{ font-size:2rem; }
+  header p{ font-size:0.95rem; }
+  .gallery img{ height:120px; }
+  h2{ font-size:1.5rem; }
+}
 </style>
 </head>
 
@@ -158,11 +179,13 @@ button{
 <p id="aboutText"></p>
 </div>
 
+<!-- ЦЕНИ -->
 <div class="card">
 <h2 id="pricesTitle"></h2>
 <p id="pricesText"></p>
 </div>
 
+<!-- ГАЛЕРИЯ -->
 <div class="card">
 <h2 id="galleryTitle"></h2>
 <div class="gallery" id="gallery"></div>
@@ -177,6 +200,7 @@ button{
 </div>
 </div>
 
+<!-- РЕЗЕРВАЦИЯ -->
 <div class="card">
 <h2 id="bookingTitle"></h2>
 
@@ -192,22 +216,36 @@ button{
 <button id="payBtn"></button>
 </div>
 
+<!-- КОНТАКТИ -->
 <div class="card">
 <h2 id="contactTitle"></h2>
 <p id="contactText"></p>
 </div>
 
+<!-- ЛОКАЦИЯ -->
+<div class="card">
+<h2 id="mapTitle"></h2>
+<div class="map-container">
+<iframe src="https://www.google.com/maps?q=40.8517289,24.3140363&z=16&output=embed"
+width="100%" height="100%" style="border:0;"></iframe>
+</div>
+<p style="margin-top:10px;font-size:0.95rem;">
+Апартаментът се намира в <strong>Неа Перамос, Кавала, Гърция</strong>, на <strong>2 км от яхтеното пристанище на Ираклица</strong> (~1,5 минути с кола), близо до плажовете <strong>Амолофи</strong> и <strong>Тюркоазените води</strong>. Има собствено парко място и двор 20 м² за малки деца.
+</p>
+</div>
+
 </div>
 
 <script>
-// ---------- LANGUAGE ----------
 const t={
 bg:{
 subtitle:"Луксозен апартамент в Неа Перамос • 2 км от яхтеното пристанище на Ираклица",
 aboutTitle:"ЗА АПАРТАМЕНТА",
 about:`Потопете се в свят на спокойствие и изискан морски комфорт.
 
-Aqua Marine KA5 е идеален за семейство от 4 човека, с двор 20 м² за малки деца. Има собствено парко място.`,
+Aqua Marine KA5 е идеален за семейство от 4 човека, с двор 20 м² за малки деца. Има собствено парко място.
+
+Разположен на около 2 км от яхтеното пристанище на Ираклица и близо до емблематичните плажове Амолофи и Тюркоазените води. Стилен интериор, простор и внимание към всеки детайл. Тераса с барбекю, светлина, стил и усещане за премиум почивка край морето.`,
 pricesTitle:"ЦЕНИ",
 prices:`Под 5 нощувки: 160€/вечер<br>5 или повече нощувки: 150€/вечер`,
 bookingTitle:"РЕЗЕРВАЦИЯ",
@@ -218,14 +256,17 @@ depositLabel:"Общ депозит (20%):",
 payBtn:"ПЛАТИ ДЕПОЗИТ",
 galleryTitle:"ГАЛЕРИЯ",
 contactTitle:"КОНТАКТИ",
-contactText:`📧 Имейл: antoaneta_n_k@yahoo.dk<br>📞 Телефон: 00359876644933`
+contactText:`📧 Имейл: antoaneta_n_k@yahoo.dk<br>📞 Телефон: 00359876644933`,
+mapTitle:"ЛОКАЦИЯ"
 },
 en:{
 subtitle:"Luxury apartment in Nea Peramos • 2 km from Iraklitsa Marina",
 aboutTitle:"ABOUT THE APARTMENT",
 about:`Step into a world of calm, elegance and seaside comfort.
 
-Aqua Marine KA5 is perfect for a family of 4, with a 20 m² yard for small children. Includes private parking space.`,
+Aqua Marine KA5 is perfect for a family of 4, with a 20 m² yard for small children. Includes private parking space.
+
+Located about 2 km from Iraklitsa Marina and close to the iconic beaches Amolofi and Turquoise waters. Stylish interior, space and attention to every detail. BBQ terrace, light, style and premium seaside holiday feeling.`,
 pricesTitle:"PRICES",
 prices:`Less than 5 nights: 160€/night<br>5+ nights: 150€/night`,
 bookingTitle:"BOOKING",
@@ -236,7 +277,8 @@ depositLabel:"Total deposit (20%):",
 payBtn:"PAY DEPOSIT",
 galleryTitle:"GALLERY",
 contactTitle:"CONTACTS",
-contactText:`📧 Email: antoaneta_n_k@yahoo.dk<br>📞 Phone: 00359876644933`
+contactText:`📧 Email: antoaneta_n_k@yahoo.dk<br>📞 Phone: 00359876644933`,
+mapTitle:"LOCATION"
 }
 };
 
@@ -256,12 +298,12 @@ function setLang(lang){
  document.getElementById('galleryTitle').innerHTML=t[lang].galleryTitle;
  document.getElementById('contactTitle').innerHTML=t[lang].contactTitle;
  document.getElementById('contactText').innerHTML=t[lang].contactText;
+ document.getElementById('mapTitle').innerHTML=t[lang].mapTitle;
  updatePrice();
 }
 
 setLang('bg');
 
-// ---------- PRICE ----------
 function updatePrice(){
  const nights=parseInt(document.getElementById('nights').value)||0;
  const pricePerNight=nights>=5?150:160;
@@ -277,7 +319,7 @@ function updatePrice(){
 document.getElementById('nights').addEventListener('input',updatePrice);
 updatePrice();
 
-// ---------- GALLERY ----------
+// Gallery
 const gallery=document.getElementById('gallery');
 for(let i=1;i<=19;i++){
  const img=document.createElement('img');
@@ -301,7 +343,6 @@ function closeLightbox(){document.getElementById('lightbox').style.display='none
 function prevImage(){currentIndex=(currentIndex-1+images.length)%images.length;document.getElementById('lightbox-img').src=images[currentIndex].src;}
 function nextImage(){currentIndex=(currentIndex+1)%images.length;document.getElementById('lightbox-img').src=images[currentIndex].src;}
 
-// ---------- SCROLL ----------
 function revealOnScroll(){
  const cards=document.querySelectorAll('.card');
  const triggerBottom=window.innerHeight*0.85;
