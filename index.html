@@ -4,21 +4,26 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aqua Marine KA5</title>
+
+<!-- Google Fonts: Playfair Display за заглавия, Lato за текст -->
+<link href="https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Playfair+Display:wght@700&display=swap" rel="stylesheet">
+
 <style>
 body {
   margin:0;
-  font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-family:'Lato', Tahoma, Geneva, Verdana, sans-serif;
   background:#D8D8D8; /* RAL 9002 */
   color:#222;
 }
+h1,h2 {font-family:'Playfair Display', serif;}
 header {
-  background:linear-gradient(135deg,#034d4d,#66b2b2); /* премиум тюркоаз */
+  background:linear-gradient(135deg,#034d4d,#66b2b2);
   color:white;
   text-align:center;
   padding:50px 20px;
 }
-header h1 {margin:0;font-size:3rem;text-align:center;}
-header p {font-size:1.2rem;text-align:center;}
+header h1 {margin:0;font-size:3rem;}
+header p {font-size:1.2rem;}
 .lang-switch {text-align:center;margin:20px;}
 button {padding:10px 20px;margin:5px;border:none;border-radius:8px;cursor:pointer;font-size:16px;transition:0.3s;}
 button:hover {opacity:0.85;}
@@ -40,6 +45,7 @@ label {display:block;margin-top:10px;font-weight:bold;}
 .map-container {width:100%;height:400px;border-radius:15px;overflow:hidden;margin-top:20px;}
 a {color:#034d4d;text-decoration:none;}
 </style>
+
 <script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
@@ -60,14 +66,14 @@ a {color:#034d4d;text-decoration:none;}
 <div class="card">
 <h2 id="aboutTitle">ЗА АПАРТАМЕНТА</h2>
 <p id="aboutText">
-Потопете се в атмосферата на уют и стил. Апартаментът разполага с две просторни спални, светла тераса с барбекю и собствен двор. Цена за нощувка: <strong>160€</strong> (под 5 нощувки), <strong>150€</strong> (5 и повече нощувки). Насладете се на незабравими летни вечери под гръцкото слънце, където морето е само на стъпки от вашия праг. Стил, комфорт и уют се преплитат в хармония, превръщайки престоя ви в истинско бягство от ежедневието.
+Потопете се в атмосферата на уют и стил. Апартаментът разполага с две просторни спални, светла тераса с барбекю и собствен двор. Насладете се на незабравими летни вечери под гръцкото слънце, където морето е само на стъпки от вашия праг. Стил, комфорт и уют се преплитат в хармония, превръщайки престоя ви в истинско бягство от ежедневието.
 </p>
 </div>
 
 <!-- ЦЕНИ -->
 <div class="card">
-<h2>ЦЕНИ</h2>
-<p>
+<h2 id="pricesTitle">ЦЕНИ</h2>
+<p id="pricesText">
 - Под 5 нощувки: <strong>160€/вечер</strong><br>
 - 5 и повече нощувки: <strong>150€/вечер</strong><br>
 *Депозит 20% от общата сума се заплаща при резервация.*
@@ -144,23 +150,27 @@ if(lang==='en'){
 document.getElementById("title").innerText="Aqua Marine KA5";
 document.getElementById("subtitle").innerText="Luxury apartment in Nea Peramos • Only 80 m from the sea";
 document.getElementById("aboutTitle").innerText="ABOUT THE APARTMENT";
-document.getElementById("aboutText").innerHTML="Immerse yourself in comfort and style. The apartment offers two spacious bedrooms, sunny terrace with BBQ and private yard. Price per night: <strong>160€</strong> (less than 5 nights), <strong>150€</strong> (5+ nights). Enjoy unforgettable summer evenings just steps from the sea. Style, comfort, and serenity blend seamlessly to make your stay a true escape.";
+document.getElementById("aboutText").innerHTML="Immerse yourself in comfort and style. The apartment offers two spacious bedrooms, sunny terrace with BBQ and private yard. Enjoy unforgettable summer evenings just steps from the sea. Style, comfort, and serenity blend seamlessly to make your stay a true escape.";
 document.getElementById("galleryTitle").innerText="GALLERY";
 document.getElementById("bookTitle").innerText="BOOKING";
 document.getElementById("depositInfo").innerText="Deposit: 20% of total amount";
+document.getElementById("pricesTitle").innerText="PRICES";
+document.getElementById("pricesText").innerHTML="- Less than 5 nights: <strong>160€/night</strong><br>- 5+ nights: <strong>150€/night</strong><br>*Deposit 20% of total amount is required upon booking.*";
 }else{
 document.getElementById("title").innerText="Aqua Marine KA5";
 document.getElementById("subtitle").innerText="Луксозен апартамент в Неа Перамос • Само на 80 метра от морето";
 document.getElementById("aboutTitle").innerText="ЗА АПАРТАМЕНТА";
-document.getElementById("aboutText").innerHTML="Потопете се в атмосферата на уют и стил. Апартаментът разполага с две просторни спални, светла тераса с барбекю и собствен двор. Цена за нощувка: <strong>160€</strong> (под 5 нощувки), <strong>150€</strong> (5 и повече нощувки). Насладете се на незабравими летни вечери под гръцкото слънце, където морето е само на стъпки от вашия праг. Стил, комфорт и уют се преплитат в хармония, превръщайки престоя ви в истинско бягство от ежедневието.";
+document.getElementById("aboutText").innerHTML="Потопете се в атмосферата на уют и стил. Апартаментът разполага с две просторни спални, светла тераса с барбекю и собствен двор. Насладете се на незабравими летни вечери под гръцкото слънце, където морето е само на стъпки от вашия праг. Стил, комфорт и уют се преплитат в хармония, превръщайки престоя ви в истинско бягство от ежедневието.";
 document.getElementById("galleryTitle").innerText="ГАЛЕРИЯ";
 document.getElementById("bookTitle").innerText="РЕЗЕРВАЦИЯ";
 document.getElementById("depositInfo").innerText="Депозит: 20% от общата сума";
+document.getElementById("pricesTitle").innerText="ЦЕНИ";
+document.getElementById("pricesText").innerHTML="- Под 5 нощувки: <strong>160€/вечер</strong><br>- 5 и повече нощувки: <strong>150€/вечер</strong><br>*Депозит 20% от общата сума се заплаща при резервация.*";
 }
 }
 
 /* Stripe тестов депозит */
-const stripe = Stripe('pk_test_51NEXAMPLEYOURTESTKEY'); // тестов ключ
+const stripe = Stripe('pk_test_51NEXAMPLEYOURTESTKEY'); // Заменете с валиден ваш Stripe тестов ключ
 document.getElementById('payButton').addEventListener('click',()=>{
 let nights=parseInt(document.getElementById("nights").value);
 if(isNaN(nights) || nights<1) {alert("Въведете валиден брой нощувки."); return;}
