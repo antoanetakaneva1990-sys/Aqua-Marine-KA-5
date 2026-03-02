@@ -5,14 +5,14 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aqua Marine KA5</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Allura&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
 <script src="https://js.stripe.com/v3/"></script>
 
 <style>
 body{
   margin:0;
   background:#D8D8D8; /* RAL 9002 */
-  font-family:'Roboto', sans-serif; /* по-четлив текст */
+  font-family:'Roboto', sans-serif;
   font-size:17px;
   color:#2b2b2b;
   line-height:1.95;
@@ -23,10 +23,12 @@ header{
   color:white;
   text-align:center;
   padding:60px 20px;
+  opacity:0;
+  animation: fadeIn 1.2s forwards;
 }
 
 header h1{
-  font-family:'Allura', cursive; /* декоративно за заглавие */
+  font-weight:700;
   font-size:3.2rem;
   margin:0 0 10px;
 }
@@ -57,11 +59,23 @@ header p{
   margin:20px 0;
   border-radius:16px;
   box-shadow:0 12px 30px rgba(0,0,0,0.08);
+  opacity:0;
+  transform: translateY(20px);
+  animation: fadeInUp 1s forwards;
 }
 
+.card:nth-child(1){ animation-delay:0.3s; }
+.card:nth-child(2){ animation-delay:0.5s; }
+.card:nth-child(3){ animation-delay:0.7s; }
+.card:nth-child(4){ animation-delay:0.9s; }
+.card:nth-child(5){ animation-delay:1.1s; }
+.card:nth-child(6){ animation-delay:1.3s; }
+.card:nth-child(7){ animation-delay:1.5s; }
+
 h2{
-  font-family:'Allura', cursive;
-  font-size:2rem;
+  font-family:'Roboto', sans-serif;
+  font-weight:700; /* Bold, четливо */
+  font-size:1.9rem;
   color:#000;
   margin-bottom:15px;
 }
@@ -74,7 +88,10 @@ button{
   border-radius:8px;
   cursor:pointer;
   font-size:15px;
+  transition: transform 0.3s;
 }
+
+button:hover{ transform: scale(1.05); }
 
 .gallery{
   display:grid;
@@ -125,6 +142,10 @@ button{
   overflow:hidden;
 }
 
+/* Animations */
+@keyframes fadeIn{ to{ opacity:1; } }
+@keyframes fadeInUp{ to{ opacity:1; transform:translateY(0); } }
+
 /* Responsive */
 @media (max-width:768px){
   header h1{ font-size:2.5rem; }
@@ -158,19 +179,19 @@ button{
 
 <!-- ABOUT -->
 <div class="card">
-<h2 id="aboutTitle">ЗА АПАРТАМЕНТА</h2>
+<h2 id="aboutTitle"></h2>
 <p id="aboutText"></p>
 </div>
 
 <!-- PRICES -->
 <div class="card">
-<h2 id="pricesTitle">ЦЕНИ</h2>
+<h2 id="pricesTitle"></h2>
 <p id="pricesText"></p>
 </div>
 
 <!-- GALLERY -->
 <div class="card">
-<h2 id="galleryTitle">ГАЛЕРИЯ</h2>
+<h2 id="galleryTitle"></h2>
 <div class="gallery" id="gallery"></div>
 </div>
 
@@ -185,7 +206,7 @@ button{
 
 <!-- BOOKING -->
 <div class="card">
-<h2 id="bookingTitle">РЕЗЕРВАЦИЯ</h2>
+<h2 id="bookingTitle"></h2>
 
 <label id="checkinLabel"></label>
 <input type="date" id="checkin" style="margin-bottom:10px;width:100%;padding:8px;">
@@ -196,22 +217,22 @@ button{
 <p id="priceResult"></p>
 <p id="depositResult"></p>
 
-<button id="payBtn">ПЛАТИ ДЕПОЗИТ</button>
+<button id="payBtn"></button>
 </div>
 
 <!-- CONTACTS -->
 <div class="card">
-<h2 id="contactTitle">КОНТАКТИ</h2>
+<h2 id="contactTitle"></h2>
 <p id="contactText"></p>
 </div>
 
 <!-- MAP -->
 <div class="card">
-<h2 id="mapTitle">ЛОКАЦИЯ</h2>
+<h2 id="mapTitle"></h2>
 <div class="map-container">
 <iframe src="https://www.google.com/maps?q=40.8517289,24.3140363&z=16&output=embed" width="100%" height="100%" style="border:0;"></iframe>
 <p style="margin-top:10px;font-size:0.95rem;">
-Апартаментът се намира в <strong>Неа Перамос, Кавала, Гърция</strong>, на <strong>2 км от яхтеното пристанище на Ираклица</strong> (~1,5 минути с кола) и близо до емблематичните плажове <strong>Амолофи</strong> и <strong>Тюркоазените води</strong>. Двор 20 м² за малки деца.
+Апартаментът се намира в <strong>Неа Перамос, Кавала, Гърция</strong>, на <strong>2 км от яхтеното пристанище на Ираклица</strong> (~1,5 минути с кола), близо до плажовете <strong>Амолофи</strong> и <strong>Тюркоазените води</strong>. Има собствено парко място и двор 20 м² за малки деца.
 </p>
 </div>
 </div>
@@ -223,37 +244,47 @@ button{
 const t={
 bg:{
 subtitle:"Луксозен апартамент в Неа Перамос • 2 км от яхтеното пристанище на Ираклица",
+aboutTitle:"ЗА АПАРТАМЕНТА",
 about:`Потопете се в свят на спокойствие и изискан морски комфорт.
 
-<strong>Aqua Marine KA5</strong> е идеален за <strong>семейство от 4 човека</strong>, с <strong>двор 20 м²</strong> за малки деца.
+Aqua Marine KA5 е идеален за семейство от 4 човека, с двор 20 м² за малки деца. Има собствено парко място.
 
 Разположен на около 2 км от яхтеното пристанище на Ираклица и близо до емблематичните плажове Амолофи и Тюркоазените води. Стилен интериор, простор и внимание към всеки детайл. Тераса с барбекю, светлина, стил и усещане за премиум почивка край морето.`,
-prices:`Под 5 нощувки: <strong>160€/вечер</strong><br>
-5 или повече нощувки: <strong>150€/вечер</strong><br>
+pricesTitle:"ЦЕНИ",
+prices:`Под 5 нощувки: 160€/вечер<br>
+5 или повече нощувки: 150€/вечер<br>
 Депозит: 20%`,
+bookingTitle:"РЕЗЕРВАЦИЯ",
 checkin:"Дата на настаняване:",
 nights:"Брой нощувки:",
 price:"Обща цена:",
 deposit:"Депозит (20%):",
-contacts:`📧 Имейл: antoaneta_n_k@yahoo.dk<br>
-📞 Телефон: 00359876644933`
+payBtn:"ПЛАТИ ДЕПОЗИТ",
+galleryTitle:"ГАЛЕРИЯ",
+contactTitle:"КОНТАКТИ",
+contactText:`📧 Имейл: antoaneta_n_k@yahoo.dk<br>📞 Телефон: 00359876644933`,
+mapTitle:"ЛОКАЦИЯ"
 },
 en:{
 subtitle:"Luxury apartment in Nea Peramos • 2 km from Iraklitsa Marina",
+aboutTitle:"ABOUT THE APARTMENT",
 about:`Step into a world of calm, elegance and seaside comfort.
 
-<strong>Aqua Marine KA5</strong> is perfect for <strong>family of 4</strong>, with a <strong>20 m² yard</strong> for small children.
+Aqua Marine KA5 is perfect for a family of 4, with a 20 m² yard for small children. Includes private parking space.
 
 Located about 2 km from Iraklitsa Marina and close to the iconic beaches Amolofi and Turquoise waters. Stylish interior, space and attention to every detail. BBQ terrace, light, style and premium seaside holiday feeling.`,
-prices:`Less than 5 nights: <strong>160€/night</strong><br>
-5+ nights: <strong>150€/night</strong><br>
-Deposit: 20%`,
+pricesTitle:"PRICES",
+prices:`Less than 5 nights: 160€/night<br>5+ nights: 150€/night<br>Deposit: 20%`,
+bookingTitle:"BOOKING",
 checkin:"Check-in date:",
 nights:"Number of nights:",
 price:"Total price:",
 deposit:"Deposit (20%):",
-contacts:`📧 Email: antoaneta_n_k@yahoo.dk<br>
-📞 Phone: 00359876644933`
+payBtn:"PAY DEPOSIT",
+galleryTitle:"GALLERY",
+contactTitle:"CONTACTS",
+contactText:`📧 Email: antoaneta_n_k@yahoo.dk<br>📞 Phone: 00359876644933`,
+mapTitle:"LOCATION"
 }
 };
 
@@ -262,11 +293,18 @@ let currentLang='bg';
 function setLang(lang){
  currentLang=lang;
  document.getElementById('subtitle').innerHTML=t[lang].subtitle;
+ document.getElementById('aboutTitle').innerHTML=t[lang].aboutTitle;
  document.getElementById('aboutText').innerHTML=t[lang].about;
+ document.getElementById('pricesTitle').innerHTML=t[lang].pricesTitle;
  document.getElementById('pricesText').innerHTML=t[lang].prices;
  document.getElementById('checkinLabel').innerHTML=t[lang].checkin;
  document.getElementById('nightsLabel').innerHTML=t[lang].nights;
- document.getElementById('contactText').innerHTML=t[lang].contacts;
+ document.getElementById('bookingTitle').innerHTML=t[lang].bookingTitle;
+ document.getElementById('payBtn').innerHTML=t[lang].payBtn;
+ document.getElementById('galleryTitle').innerHTML=t[lang].galleryTitle;
+ document.getElementById('contactTitle').innerHTML=t[lang].contactTitle;
+ document.getElementById('contactText').innerHTML=t[lang].contactText;
+ document.getElementById('mapTitle').innerHTML=t[lang].mapTitle;
  updatePrice();
 }
 setLang('bg');
