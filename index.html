@@ -56,6 +56,7 @@ a {color:#034d4d;text-decoration:none;}
 
 <div class="container">
 
+<!-- ЗА АПАРТАМЕНТА -->
 <div class="card">
 <h2 id="aboutTitle">ЗА АПАРТАМЕНТА</h2>
 <p id="aboutText">
@@ -63,6 +64,17 @@ a {color:#034d4d;text-decoration:none;}
 </p>
 </div>
 
+<!-- ЦЕНИ -->
+<div class="card">
+<h2>ЦЕНИ</h2>
+<p>
+- Под 5 нощувки: <strong>160€/вечер</strong><br>
+- 5 и повече нощувки: <strong>150€/вечер</strong><br>
+*Депозит 20% от общата сума се заплаща при резервация.*
+</p>
+</div>
+
+<!-- ГАЛЕРИЯ -->
 <div class="card">
 <h2 id="galleryTitle">ГАЛЕРИЯ</h2>
 <div class="gallery" id="gallery">
@@ -83,6 +95,7 @@ for(let i=1;i<=19;i++){
 <button style="margin-top:10px;padding:8px 16px;" onclick="closeLightbox()">Затвори</button>
 </div>
 
+<!-- РЕЗЕРВАЦИЯ -->
 <div class="card book-section">
 <h2 id="bookTitle">РЕЗЕРВАЦИЯ</h2>
 <label>Дата на настаняване:</label>
@@ -93,6 +106,7 @@ for(let i=1;i<=19;i++){
 <button class="primary" id="payButton">Плати депозит</button>
 </div>
 
+<!-- ЛОКАЦИЯ -->
 <div class="card">
 <h2>ЛОКАЦИЯ</h2>
 <div class="map-container">
@@ -100,6 +114,7 @@ for(let i=1;i<=19;i++){
 </div>
 </div>
 
+<!-- КОНТАКТИ -->
 <div class="card">
 <h2>КОНТАКТИ</h2>
 <p>Телефон: <a href="tel:+359876644933">00359 87 664 4933</a></p>
@@ -129,7 +144,7 @@ if(lang==='en'){
 document.getElementById("title").innerText="Aqua Marine KA5";
 document.getElementById("subtitle").innerText="Luxury apartment in Nea Peramos • Only 80 m from the sea";
 document.getElementById("aboutTitle").innerText="ABOUT THE APARTMENT";
-document.getElementById("aboutText").innerHTML="Immerse yourself in comfort and style. The apartment offers two spacious bedrooms, sunny terrace with BBQ and private yard. Price per night: <strong>160€</strong> (less than 5 nights), <strong>150€</strong> (5+ nights). Enjoy unforgettable summer evenings just steps from the sea. Style, comfort, and serenity blend to make your stay a true escape.";
+document.getElementById("aboutText").innerHTML="Immerse yourself in comfort and style. The apartment offers two spacious bedrooms, sunny terrace with BBQ and private yard. Price per night: <strong>160€</strong> (less than 5 nights), <strong>150€</strong> (5+ nights). Enjoy unforgettable summer evenings just steps from the sea. Style, comfort, and serenity blend seamlessly to make your stay a true escape.";
 document.getElementById("galleryTitle").innerText="GALLERY";
 document.getElementById("bookTitle").innerText="BOOKING";
 document.getElementById("depositInfo").innerText="Deposit: 20% of total amount";
