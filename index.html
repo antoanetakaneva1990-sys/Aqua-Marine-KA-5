@@ -3,27 +3,70 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Aqua Marine KA5 - Галерия</title>
+<title>Aqua Marine KA5</title>
 <style>
 body {margin:0;font-family:Arial,sans-serif;background:#f2f6fb;color:#222;}
-header{background:linear-gradient(135deg,#0077b6,#00c6ff);color:white;text-align:center;padding:30px;}
+header{background:linear-gradient(135deg,#0077b6,#00c6ff);color:white;text-align:center;padding:40px;}
 header h1{margin:0;font-size:2.5rem;}
+header p{font-size:1.2rem;}
+.lang-switch{text-align:center;margin:20px;}
+button{padding:10px 20px;margin:5px;border:none;border-radius:8px;cursor:pointer;font-size:16px;transition:0.3s;}
+button:hover{opacity:0.85;}
+.primary{background:#0077b6;color:white;}
 .container{max-width:1200px;margin:auto;padding:20px;}
+.card{background:white;margin:20px 0;padding:25px;border-radius:15px;box-shadow:0 10px 25px rgba(0,0,0,0.1);}
+h2{margin-top:0;color:#0077b6;}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:15px;}
 .gallery img{width:100%;border-radius:12px;cursor:pointer;object-fit:cover;height:150px;transition:0.3s;}
 .gallery img:hover{transform:scale(1.05);}
 #lightbox{position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.85);display:none;justify-content:center;align-items:center;z-index:1000;}
 #lightbox img{max-width:90%;max-height:90%;border-radius:12px;}
-footer{text-align:center;padding:20px;color:#555;background:#eee;}
+footer{text-align:center;padding:40px;color:#555;background:#eee;}
+input, select{padding:10px;margin:5px 0;border-radius:6px;border:1px solid #ccc;width:100%;box-sizing:border-box;}
+label{display:block;margin-top:10px;font-weight:bold;}
+.book-section button{width:100%;}
+.calendar{display:flex;flex-wrap:wrap;gap:5px;margin-top:10px;}
+.calendar div{width:40px;height:40px;display:flex;align-items:center;justify-content:center;border-radius:6px;cursor:pointer;background:#e0f0ff;}
+.calendar div.busy{background:#ccc;cursor:not-allowed;}
 </style>
 </head>
 <body>
 
 <header>
-<h1>Aqua Marine KA5 - Галерия</h1>
+<h1 id="title">Aqua Marine KA5</h1>
+<p id="subtitle">Луксозен апартамент в Неа Перамос • 80 м от морето</p>
 </header>
 
+<div class="lang-switch">
+<button onclick="setLang('bg')" class="primary">🇧🇬 Български</button>
+<button onclick="setLang('en')" class="primary">🇬🇧 English</button>
+</div>
+
 <div class="container">
+
+<!-- Информация за апартамента -->
+<div class="card">
+<h2 id="aboutTitle">За апартамента</h2>
+<p id="aboutText">
+• 2 спални<br>
+• Собствено паркомясто<br>
+• Тераса с барбекю и двор<br>
+• Само на 80 м от морето
+</p>
+</div>
+
+<!-- Цени -->
+<div class="card">
+<h2 id="priceTitle">Цени</h2>
+<p id="priceText">
+• 150€ на вечер (5+ нощувки)<br>
+• 160€ на вечер (под 5 нощувки)
+</p>
+</div>
+
+<!-- Галерия -->
+<div class="card">
+<h2 id="galleryTitle">Галерия</h2>
 <div class="gallery">
 <img src="img1.jpg" onclick="openImage(this.src)">
 <img src="img2.jpg" onclick="openImage(this.src)">
@@ -51,17 +94,98 @@ footer{text-align:center;padding:20px;color:#555;background:#eee;}
 <img id="lightbox-img">
 </div>
 
+<!-- Резервация -->
+<div class="card book-section">
+<h2 id="bookTitle">Резервация</h2>
+
+<label for="checkin">Дата на настаняване:</label>
+<input type="date" id="checkin">
+
+<label for="nights">Брой нощувки:</label>
+<select id="nights">
+<option value="1">1</option>
+<option value="2">2</option>
+<option value="3">3</option>
+<option value="4">4</option>
+<option value="5">5</option>
+<option value="6">6</option>
+<option value="7">7</option>
+</select>
+
+<p id="depositInfo">Депозит: 20% от общата сума</p>
+<button class="primary" onclick="calculateDeposit()">Плати депозит</button>
+
+<h3>Заети дати</h3>
+<div class="calendar" id="calendar">
+<div class="busy">1</div>
+<div>2</div>
+<div>3</div>
+<div class="busy">4</div>
+<div>5</div>
+<div>6</div>
+<div class="busy">7</div>
+<!-- добави реални заети дни -->
+</div>
+</div>
+
+<!-- Контакти -->
+<div class="card" style="text-align:center">
+<h2 id="contactTitle">Контакти</h2>
+<p id="contactText">
+📧 Имейл: <a href="mailto:antoaneta_n_k@yahoo.dk">antoaneta_n_k@yahoo.dk</a><br>
+📞 Телефон: <a href="tel:+359876644933">00359876644933</a>
+</p>
+</div>
+
+</div>
+
 <footer>
 © 2026 Aqua Marine KA5 • Неа Перамос
 </footer>
 
 <script>
+function setLang(lang){
+if(lang==='en'){
+title.innerText="Aqua Marine KA5";
+subtitle.innerText="Luxury apartment in Nea Peramos • 80 m from the sea";
+aboutTitle.innerText="About the apartment";
+aboutText.innerHTML="• 2 bedrooms<br>• Private parking<br>• Terrace with BBQ and yard<br>• Only 80 m from the sea";
+priceTitle.innerText="Prices";
+priceText.innerHTML="• €150 per night (5+ nights)<br>• €160 per night (under 5 nights)";
+galleryTitle.innerText="Gallery";
+bookTitle.innerText="Booking";
+contactTitle.innerText="Contact";
+contactText.innerHTML="📧 Email: <a href='mailto:antoaneta_n_k@yahoo.dk'>antoaneta_n_k@yahoo.dk</a><br>📞 Phone: <a href='tel:+359876644933'>00359876644933</a>";
+depositInfo.innerText="Deposit: 20% of total amount";
+}else{
+title.innerText="Aqua Marine KA5";
+subtitle.innerText="Луксозен апартамент в Неа Перамос • 80 м от морето";
+aboutTitle.innerText="За апартамента";
+aboutText.innerHTML="• 2 спални<br>• Собствено паркомясто<br>• Тераса с барбекю и двор<br>• Само на 80 м от морето";
+priceTitle.innerText="Цени";
+priceText.innerHTML="• 150€ на вечер (5+ нощувки)<br>• 160€ на вечер (под 5 нощувки)";
+galleryTitle.innerText="Галерия";
+bookTitle.innerText="Резервация";
+contactTitle.innerText="Контакти";
+contactText.innerHTML="📧 Имейл: <a href='mailto:antoaneta_n_k@yahoo.dk'>antoaneta_n_k@yahoo.dk</a><br>📞 Телефон: <a href='tel:+359876644933'>00359876644933</a>";
+depositInfo.innerText="Депозит: 20% от общата сума";
+}
+}
+
 function openImage(src){
-  document.getElementById("lightbox").style.display="flex";
-  document.getElementById("lightbox-img").src=src;
+document.getElementById("lightbox").style.display="flex";
+document.getElementById("lightbox-img").src=src;
 }
 function closeImage(){
-  document.getElementById("lightbox").style.display="none";
+document.getElementById("lightbox").style.display="none";
+}
+
+function calculateDeposit(){
+let nights=parseInt(document.getElementById("nights").value);
+let pricePerNight=nights>=5?150:160;
+let total=nights*pricePerNight;
+let deposit=total*0.2;
+alert(`Обща сума: ${total}€\nДепозит (20%): ${deposit}€`);
 }
 </script>
 
