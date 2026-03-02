@@ -5,17 +5,16 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Aqua Marine KA5</title>
 
-<!-- PREMIUM FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Allura&family=Cormorant+Garamond:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 body{
   margin:0;
   background:#D8D8D8; /* RAL 9002 */
-  font-family:'Montserrat', sans-serif;
+  font-family:'Cormorant Garamond', serif;
   color:#2c2c2c;
-  line-height:1.85;
-  font-size:18px; /* УВЕЛИЧЕН ОСНОВЕН ТЕКСТ */
+  line-height:1.8;
+  font-size:16.5px; /* една идея по-малък */
 }
 
 /* HEADER */
@@ -28,67 +27,52 @@ header{
 
 header h1{
   margin:0;
-  font-family:'Playfair Display', serif;
-  font-size:3.2rem;
+  font-family:'Allura', cursive;
+  font-size:3.8rem;
   letter-spacing:1px;
 }
 
 header p{
-  font-size:1.25rem;
-  opacity:0.95;
+  font-size:1.1rem;
 }
 
-/* LANGUAGE */
-.lang-switch{text-align:center;margin:25px;}
-
+/* BUTTONS */
 button{
-  padding:12px 22px;
+  padding:10px 20px;
   margin:6px;
   border:none;
-  border-radius:10px;
+  border-radius:8px;
   cursor:pointer;
-  font-size:16px;
-  transition:0.25s;
-}
-
-button:hover{opacity:0.9;transform:translateY(-1px);}
-
-.primary{
+  font-size:15px;
   background:#0f6a6a;
   color:white;
 }
 
-/* CONTAINER */
 .container{
-  max-width:1200px;
+  max-width:1100px;
   margin:auto;
   padding:25px;
 }
 
-/* CARD */
 .card{
   background:white;
   margin:25px 0;
   padding:40px;
-  border-radius:18px;
-  box-shadow:0 15px 35px rgba(0,0,0,0.08);
+  border-radius:16px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.08);
 }
 
-/* SECTION TITLES — НОВ ЛУКСОЗЕН ШРИФТ */
+/* SECTION TITLES */
 h2{
-  font-family:'Playfair Display', serif;
-  text-transform:uppercase;
-  letter-spacing:2px;
-  font-size:1.6rem;
+  font-family:'Allura', cursive;
+  font-size:2.4rem;
   color:#000;
-  border-bottom:3px solid #0f6a6a;
-  padding-bottom:10px;
-  margin-bottom:20px;
+  margin-bottom:15px;
 }
 
-/* DESCRIPTION — МАРКЕТИНГ СТИЛ */
+/* DESCRIPTION */
 .description{
-  font-size:19px;
+  font-size:17px;
   color:#333;
 }
 
@@ -108,13 +92,13 @@ h2{
   width:100%;
   height:160px;
   object-fit:cover;
-  border-radius:14px;
+  border-radius:12px;
   cursor:pointer;
-  transition:0.35s;
+  transition:0.3s;
 }
 
 .gallery img:hover{
-  transform:scale(1.06);
+  transform:scale(1.05);
 }
 
 /* LIGHTBOX */
@@ -122,105 +106,66 @@ h2{
   position:fixed;
   top:0;left:0;
   width:100%;height:100%;
-  background:rgba(0,0,0,0.92);
+  background:rgba(0,0,0,0.9);
   display:none;
   justify-content:center;
   align-items:center;
   flex-direction:column;
-  z-index:1000;
 }
 
 #lightbox img{
-  max-width:82%;
-  max-height:82%;
-  border-radius:12px;
+  max-width:80%;
+  max-height:80%;
 }
 
 #lightbox .nav{
-  display:flex;
-  justify-content:space-between;
-  width:80%;
-  max-width:600px;
   margin-top:15px;
 }
 
-/* FORM */
 input{
-  padding:12px;
+  padding:10px;
   margin:6px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
   width:100%;
-  font-size:16px;
-}
-
-label{
-  font-weight:500;
+  border-radius:6px;
+  border:1px solid #ccc;
 }
 
 footer{
   text-align:center;
-  padding:40px;
-  color:#666;
-  background:#eee;
-}
-
-.map-container{
-  width:100%;
-  height:400px;
-  border-radius:15px;
-  overflow:hidden;
-  margin-top:20px;
+  padding:30px;
+  color:#555;
 }
 </style>
-
-<script src="https://js.stripe.com/v3/"></script>
 </head>
 <body>
 
 <header>
-<h1 id="title">Aqua Marine KA5</h1>
-<p id="subtitle">Луксозен апартамент в Неа Перамос • Само на 80 метра от морето</p>
+<h1>Aqua Marine KA5</h1>
+<p>Луксозен апартамент в Неа Перамос • Само на 80 метра от морето</p>
 </header>
-
-<div class="lang-switch">
-<button onclick="setLang('bg')" class="primary">Български</button>
-<button onclick="setLang('en')" class="primary">English</button>
-</div>
 
 <div class="container">
 
-<!-- ABOUT -->
 <div class="card">
-<h2 id="aboutTitle">ЗА АПАРТАМЕНТА</h2>
+<h2>За Апартамента</h2>
+<p class="description">
+Представете си утро, в което морският бриз нежно влиза през терасата,
+а слънцето огрява елегантния интериор.
 
-<p id="aboutText" class="description">
-Представете си утро, в което морският бриз нежно влиза през терасата, а денят започва без бързане.  
-<strong class="highlight">Aqua Marine KA5</strong> е създаден за хора, които ценят детайла, уюта и усещането за истинска почивка.
+<span class="highlight">Aqua Marine KA5</span> е създаден за хора,
+които ценят спокойствието, детайла и истинския комфорт.
 
-Апартаментът разполага с <span class="highlight">просторни и стилно обзаведени спални</span>, светла дневна зона и великолепна тераса с барбекю — идеална за топли летни вечери.
+Само <span class="highlight">80 метра от плажа</span>,
+с <span class="highlight">частно паркомясто</span> —
+лукс, който рядко се предлага в Неа Перамос.
 
-Само на <span class="highlight">80 метра от плажа</span>, вие сте винаги на крачка от кристалното море на Неа Перамос.
-
-За вашето пълно спокойствие е осигурено и <span class="highlight">собствено паркомясто</span> — рядък лукс в района през активния сезон.
-
-Тук всяка подробност е подбрана така, че да усетите <span class="highlight">комфорт, тишина и премиум атмосфера</span>, достойна за вашата незабравима гръцка ваканция.
+Тераса с барбекю, светли пространства,
+изискана атмосфера и усещане за дом край морето.
 </p>
 </div>
 
-<!-- PRICES -->
 <div class="card">
-<h2 id="pricesTitle">ЦЕНИ</h2>
-<p id="pricesText">
-- Под 5 нощувки: <strong>160€/вечер</strong><br>
-- 5 и повече нощувки: <strong>150€/вечер</strong><br>
-*Депозит 20% при резервация*
-</p>
-</div>
-
-<!-- GALLERY -->
-<div class="card">
-<h2 id="galleryTitle">ГАЛЕРИЯ</h2>
+<h2>Галерия</h2>
 <div class="gallery" id="gallery">
 <script>
 for(let i=1;i<=19;i++){
@@ -235,41 +180,26 @@ for(let i=1;i<=19;i++){
 <div class="nav">
 <button onclick="prevImage()">←</button>
 <button onclick="nextImage()">→</button>
-</div>
 <button onclick="closeLightbox()">Затвори</button>
 </div>
+</div>
 
-<!-- BOOKING -->
 <div class="card">
-<h2 id="bookTitle">РЕЗЕРВАЦИЯ</h2>
-
-<label>Дата на настаняване:</label>
-<input type="date" id="checkin">
-
-<label>Брой нощувки:</label>
-<input type="number" id="nights" min="1" value="1">
-
-<p id="depositInfo">Депозит: 20% от общата сума</p>
-
-<button class="primary" id="payButton">Плати депозит</button>
+<h2>Контакти</h2>
+<p>
+📧 antoaneta_n_k@yahoo.dk<br>
+📞 00359876644933
+</p>
 </div>
 
-<!-- MAP -->
-<div class="card">
-<h2>ЛОКАЦИЯ</h2>
-<div class="map-container">
-<iframe src="https://www.google.com/maps?q=40.8517289,24.3140363&hl=bg&z=16&output=embed" width="100%" height="100%" style="border:0;" loading="lazy"></iframe>
-</div>
 </div>
 
-<footer>
-© 2026 Aqua Marine KA5
-</footer>
+<footer>© 2026 Aqua Marine KA5</footer>
 
 <script>
-/* GALLERY */
 let galleryImages=document.querySelectorAll('#gallery img');
 let currentIndex=0;
+
 galleryImages.forEach(img=>{
  img.addEventListener('click',()=>{
   currentIndex=parseInt(img.dataset.index);
@@ -277,9 +207,18 @@ galleryImages.forEach(img=>{
   document.getElementById('lightbox-img').src=img.src;
  });
 });
-function closeLightbox(){document.getElementById('lightbox').style.display='none';}
-function prevImage(){currentIndex=(currentIndex-1+galleryImages.length)%galleryImages.length;document.getElementById('lightbox-img').src=galleryImages[currentIndex].src;}
-function nextImage(){currentIndex=(currentIndex+1)%galleryImages.length;document.getElementById('lightbox-img').src=galleryImages[currentIndex].src;}
+
+function closeLightbox(){
+ document.getElementById('lightbox').style.display='none';
+}
+function prevImage(){
+ currentIndex=(currentIndex-1+galleryImages.length)%galleryImages.length;
+ document.getElementById('lightbox-img').src=galleryImages[currentIndex].src;
+}
+function nextImage(){
+ currentIndex=(currentIndex+1)%galleryImages.length;
+ document.getElementById('lightbox-img').src=galleryImages[currentIndex].src;
+}
 </script>
 
 </body>
