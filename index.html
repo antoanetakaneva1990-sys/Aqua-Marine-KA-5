@@ -42,6 +42,12 @@ header p{
 
 .lang-switch button{
   margin:0 5px;
+  background:#0f6a6a;
+  color:white;
+  border:none;
+  padding:8px 16px;
+  border-radius:6px;
+  cursor:pointer;
 }
 
 .container{
@@ -61,18 +67,7 @@ header p{
 h2{
   font-weight:700;
   font-size:1.8rem;
-  color:#000;
   margin-bottom:15px;
-}
-
-button{
-  background:#0f6a6a;
-  color:white;
-  border:none;
-  padding:12px 22px;
-  border-radius:8px;
-  cursor:pointer;
-  font-size:15px;
 }
 
 .input-field{
@@ -85,6 +80,48 @@ button{
   background:#f7f7f7;
 }
 
+button.main-btn{
+  background:#0f6a6a;
+  color:white;
+  border:none;
+  padding:12px 22px;
+  border-radius:8px;
+  cursor:pointer;
+  font-size:15px;
+}
+
+.gallery{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
+}
+
+.gallery img{
+  width:100%;
+  height:160px;
+  object-fit:cover;
+  border-radius:12px;
+  cursor:pointer;
+}
+
+#lightbox{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.95);
+  display:none;
+  justify-content:center;
+  align-items:center;
+  flex-direction:column;
+  z-index:9999;
+}
+
+#lightbox img{
+  max-width:90%;
+  max-height:80%;
+  border-radius:12px;
+  margin-bottom:15px;
+}
+
 .map-container{
   width:100%;
   height:400px;
@@ -93,7 +130,7 @@ button{
 }
 
 @media (max-width:768px){
-  header h1{ font-size:2.3rem; }
+  header h1{ font-size:2.2rem; }
   .card{ padding:20px; }
 }
 </style>
@@ -113,27 +150,59 @@ button{
 
 <div class="container">
 
+<!-- ЗА АПАРТАМЕНТА -->
 <div class="card">
 <h2 id="aboutTitle"></h2>
 <p id="aboutText"></p>
 </div>
 
+<!-- НАСТАНЯВАНЕ -->
 <div class="card">
 <h2 id="stayTitle"></h2>
 <p id="stayText"></p>
 </div>
 
+<!-- ЦЕНИ -->
 <div class="card">
 <h2 id="pricesTitle"></h2>
 <p id="pricesText"></p>
 </div>
 
+<!-- РЕЗЕРВАЦИЯ -->
+<div class="card">
+<h2 id="bookingTitle"></h2>
+
+<label id="checkinLabel"></label>
+<input type="date" id="checkin" class="input-field">
+
+<label id="nightsLabel"></label>
+<input type="number" id="nights" min="1" value="1" class="input-field">
+
+<p id="totalPrice" style="font-weight:600;"></p>
+<p id="depositPrice" style="font-weight:600;"></p>
+
+<button class="main-btn" id="payBtn"></button>
+</div>
+
+<!-- ГАЛЕРИЯ -->
+<div class="card">
+<h2 id="galleryTitle"></h2>
+<div class="gallery" id="gallery"></div>
+</div>
+
+<div id="lightbox">
+<img id="lightbox-img">
+<button class="main-btn" onclick="closeLightbox()">Затвори</button>
+</div>
+
+<!-- КОНТАКТИ -->
 <div class="card">
 <h2 id="contactTitle"></h2>
 <p id="contactText"></p>
-<p>🌐 <a href="https://www.facebook.com/share/17wdG6LS9p/?mibextid=wwXIfr" target="_blank">Фейсбук страница</a></p>
+<p>🌐 <a href="https://www.facebook.com/share/17wdG6LS9p/?mibextid=wwXIfr" target="_blank">Facebook</a></p>
 </div>
 
+<!-- ЛОКАЦИЯ -->
 <div class="card">
 <h2 id="mapTitle"></h2>
 <div class="map-container">
@@ -159,45 +228,68 @@ Aqua Marine KA5 е идеален за до 4 гости и предлага д�
 stayTitle:"НАСТАНЯВАНЕ",
 stayText:"Настаняване: след 14:00 ч.<br>Напускане: до 10:00 ч.",
 pricesTitle:"ЦЕНИ",
-prices:`Под 5 нощувки: 160€/вечер<br>5 или повече нощувки: 150€/вечер`,
+prices:"Под 5 нощувки: 160€/вечер<br>5 или повече нощувки: 150€/вечер",
+bookingTitle:"РЕЗЕРВАЦИЯ",
+checkin:"Дата на настаняване:",
+nights:"Брой нощувки:",
+total:"Обща цена за престой:",
+deposit:"Депозит (20%):",
+pay:"ПЛАТИ ДЕПОЗИТ",
+galleryTitle:"ГАЛЕРИЯ",
 contactTitle:"КОНТАКТИ",
-contactText:`📧 Имейл: antoaneta_n_k@yahoo.dk<br>📞 Телефон: 00359876644933`,
+contactText:"📧 Имейл: antoaneta_n_k@yahoo.dk<br>📞 Телефон: 00359876644933",
 mapTitle:"ЛОКАЦИЯ"
-},
-en:{
-subtitle:"Luxury apartment in Nea Peramos • 2 km from Iraklitsa Marina",
-aboutTitle:"ABOUT THE APARTMENT",
-about:`Step into a world of calm and refined seaside comfort.
-
-Aqua Marine KA5 is ideal for up to 4 guests and offers two separate bedrooms and a cozy living room with sofa bed. Each room features a TV, and central air conditioning ensures cool comfort during the summer days.
-
-The apartment includes a bathroom with toilet and an additional separate toilet. The fully equipped kitchen includes a washing machine and dishwasher. A 20 m² yard, private parking space and BBQ terrace are also available.
-
-Located about 2 km from Iraklitsa Marina and close to the beaches of Amolofi and the turquoise waters of the area, Aqua Marine KA5 combines comfort, style and an excellent location for a relaxing summer holiday.`,
-stayTitle:"CHECK-IN & CHECK-OUT",
-stayText:"Check-in: after 14:00<br>Check-out: until 10:00",
-pricesTitle:"PRICES",
-prices:`Less than 5 nights: 160€/night<br>5+ nights: 150€/night`,
-contactTitle:"CONTACTS",
-contactText:`📧 Email: antoaneta_n_k@yahoo.dk<br>📞 Phone: 00359876644933`,
-mapTitle:"LOCATION"
 }
 };
 
 function setLang(lang){
- document.getElementById('subtitle').innerHTML=t[lang].subtitle;
- document.getElementById('aboutTitle').innerHTML=t[lang].aboutTitle;
- document.getElementById('aboutText').innerHTML=t[lang].about;
- document.getElementById('stayTitle').innerHTML=t[lang].stayTitle;
- document.getElementById('stayText').innerHTML=t[lang].stayText;
- document.getElementById('pricesTitle').innerHTML=t[lang].pricesTitle;
- document.getElementById('pricesText').innerHTML=t[lang].prices;
- document.getElementById('contactTitle').innerHTML=t[lang].contactTitle;
- document.getElementById('contactText').innerHTML=t[lang].contactText;
- document.getElementById('mapTitle').innerHTML=t[lang].mapTitle;
+document.getElementById('subtitle').innerHTML=t[lang].subtitle;
+document.getElementById('aboutTitle').innerHTML=t[lang].aboutTitle;
+document.getElementById('aboutText').innerHTML=t[lang].about;
+document.getElementById('stayTitle').innerHTML=t[lang].stayTitle;
+document.getElementById('stayText').innerHTML=t[lang].stayText;
+document.getElementById('pricesTitle').innerHTML=t[lang].pricesTitle;
+document.getElementById('pricesText').innerHTML=t[lang].prices;
+document.getElementById('bookingTitle').innerHTML=t[lang].bookingTitle;
+document.getElementById('checkinLabel').innerHTML=t[lang].checkin;
+document.getElementById('nightsLabel').innerHTML=t[lang].nights;
+document.getElementById('payBtn').innerHTML=t[lang].pay;
+document.getElementById('galleryTitle').innerHTML=t[lang].galleryTitle;
+document.getElementById('contactTitle').innerHTML=t[lang].contactTitle;
+document.getElementById('contactText').innerHTML=t[lang].contactText;
+document.getElementById('mapTitle').innerHTML=t[lang].mapTitle;
+updatePrice();
 }
 
 setLang('bg');
+
+function updatePrice(){
+let nights=parseInt(document.getElementById('nights').value)||0;
+let pricePerNight=nights>=5?150:160;
+let total=nights*pricePerNight;
+let deposit=total*0.2;
+
+document.getElementById('totalPrice').innerHTML=t.bg.total+" "+total+"€";
+document.getElementById('depositPrice').innerHTML=t.bg.deposit+" "+deposit.toFixed(2)+"€";
+}
+
+document.getElementById('nights').addEventListener('input',updatePrice);
+updatePrice();
+
+const gallery=document.getElementById('gallery');
+for(let i=1;i<=19;i++){
+let img=document.createElement('img');
+img.src='img'+i+'.jpg';
+img.onclick=function(){
+document.getElementById('lightbox').style.display='flex';
+document.getElementById('lightbox-img').src=this.src;
+}
+gallery.appendChild(img);
+}
+
+function closeLightbox(){
+document.getElementById('lightbox').style.display='none';
+}
 </script>
 
 </body>
