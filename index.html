@@ -6,7 +6,6 @@
 <title>Aqua Marine KA5</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<script src="https://js.stripe.com/v3/"></script>
 
 <style>
 body{
@@ -17,7 +16,6 @@ body{
   color:#2b2b2b;
   line-height:1.95;
 }
-
 header{
   background:linear-gradient(135deg,#033c3c,#0f6a6a);
   color:white;
@@ -26,33 +24,27 @@ header{
   opacity:0;
   animation: fadeIn 1.2s forwards;
 }
-
 header h1{
   font-weight:700;
   font-size:3.2rem;
   margin:0 0 10px;
 }
-
 header p{
   font-size:1.2rem;
   margin:0;
 }
-
 .lang-switch{
   text-align:center;
   margin:15px 0;
 }
-
 .lang-switch button{
   margin:0 5px;
 }
-
 .container{
   max-width:1150px;
   margin:auto;
   padding:20px;
 }
-
 .card{
   background:white;
   padding:30px;
@@ -63,19 +55,16 @@ header p{
   transform:translateY(30px);
   transition:all 0.8s ease-out;
 }
-
 .card.visible{
   opacity:1;
   transform:translateY(0);
 }
-
 h2{
   font-weight:700;
   font-size:1.9rem;
   color:#000;
   margin-bottom:15px;
 }
-
 button{
   background:#0f6a6a;
   color:white;
@@ -86,9 +75,7 @@ button{
   font-size:15px;
   transition:transform 0.3s;
 }
-
 button:hover{ transform:scale(1.05); }
-
 .input-field{
   margin-bottom:10px;
   width:100%;
@@ -98,13 +85,11 @@ button:hover{ transform:scale(1.05); }
   font-size:16px;
   background:#f7f7f7;
 }
-
 .gallery{
   display:grid;
   grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
   gap:15px;
 }
-
 .gallery img{
   width:100%;
   height:160px;
@@ -113,9 +98,7 @@ button:hover{ transform:scale(1.05); }
   cursor:pointer;
   transition:transform 0.3s;
 }
-
 .gallery img:hover{ transform:scale(1.05); }
-
 #lightbox{
   position:fixed;
   inset:0;
@@ -126,20 +109,17 @@ button:hover{ transform:scale(1.05); }
   flex-direction:column;
   z-index:9999;
 }
-
 #lightbox img{
   max-width:90%;
   max-height:80%;
   border-radius:12px;
   margin-bottom:15px;
 }
-
 #lightbox-controls{
   display:flex;
   justify-content:center;
   gap:15px;
 }
-
 #lightbox-controls button{
   background:#0f6a6a;
   color:white;
@@ -154,18 +134,14 @@ button:hover{ transform:scale(1.05); }
   justify-content:center;
   align-items:center;
 }
-
 #lightbox-controls button:hover{ transform:scale(1.05); }
-
 .map-container{
   width:100%;
   height:400px;
   border-radius:14px;
   overflow:hidden;
 }
-
 @keyframes fadeIn{ to{opacity:1;} }
-
 @media (max-width:768px){
   header h1{ font-size:2.5rem; }
   header p{ font-size:1rem; }
@@ -173,7 +149,6 @@ button:hover{ transform:scale(1.05); }
   .card{ padding:20px; }
   h2{ font-size:1.7rem; }
 }
-
 @media (max-width:480px){
   header h1{ font-size:2rem; }
   header p{ font-size:0.95rem; }
@@ -236,18 +211,14 @@ button:hover{ transform:scale(1.05); }
 </div>
 
 <div class="card">
-<h2>НАСТАНЯВАНЕ</h2>
-<p>Настаняване: 14:00</p>
-<p>Напускане: 10:00</p>
+<h2 id="accommodationTitle"></h2>
+<p id="checkinTime"></p>
+<p id="checkoutTime"></p>
 </div>
 
 <div class="card">
-<h2>ПЛАЩАНЕ</h2>
-<p>Изберете начин на плащане:</p>
-<button onclick="showBank()">Банкова сметка</button>
-<button onclick="showRevolut()">Revolut</button>
-
-<div id="paymentInfo" style="margin-top:15px;font-weight:600;"></div>
+<h2 id="paymentTitle"></h2>
+<p id="paymentText"></p>
 </div>
 
 <div class="card">
@@ -284,6 +255,11 @@ nights:"Брой нощувки:",
 priceLabel:"Обща цена за престой:",
 depositLabel:"Общ депозит (20%):",
 payBtn:"ПЛАТИ ДЕПОЗИТ",
+accommodationTitle:"НАСТАНЯВАНЕ",
+checkinTime:"Настаняване: 14:00",
+checkoutTime:"Напускане: 10:00",
+paymentTitle:"ПЛАЩАНЕ",
+paymentText:"Може да платите чрез банков превод или Revolut.",
 galleryTitle:"ГАЛЕРИЯ",
 contactTitle:"КОНТАКТИ",
 contactText:`📧 Имейл: antoaneta_n_k@yahoo.dk<br>📞 Телефон: 00359876644933`,
@@ -305,6 +281,11 @@ nights:"Number of nights:",
 priceLabel:"Total stay price:",
 depositLabel:"Total deposit (20%):",
 payBtn:"PAY DEPOSIT",
+accommodationTitle:"ACCOMMODATION",
+checkinTime:"Check-in: 14:00",
+checkoutTime:"Check-out: 10:00",
+paymentTitle:"PAYMENT",
+paymentText:"Payment can be made via bank transfer or Revolut.",
 galleryTitle:"GALLERY",
 contactTitle:"CONTACTS",
 contactText:`📧 Email: antoaneta_n_k@yahoo.dk<br>📞 Phone: 00359876644933`,
@@ -325,6 +306,11 @@ function setLang(lang){
  document.getElementById('nightsLabel').innerHTML=t[lang].nights;
  document.getElementById('bookingTitle').innerHTML=t[lang].bookingTitle;
  document.getElementById('payBtn').innerHTML=t[lang].payBtn;
+ document.getElementById('accommodationTitle').innerHTML=t[lang].accommodationTitle;
+ document.getElementById('checkinTime').innerHTML=t[lang].checkinTime;
+ document.getElementById('checkoutTime').innerHTML=t[lang].checkoutTime;
+ document.getElementById('paymentTitle').innerHTML=t[lang].paymentTitle;
+ document.getElementById('paymentText').innerHTML=t[lang].paymentText;
  document.getElementById('galleryTitle').innerHTML=t[lang].galleryTitle;
  document.getElementById('contactTitle').innerHTML=t[lang].contactTitle;
  document.getElementById('contactText').innerHTML=t[lang].contactText;
@@ -383,17 +369,6 @@ function revealOnScroll(){
 }
 window.addEventListener('scroll',revealOnScroll);
 window.addEventListener('load',revealOnScroll);
-
-// Payment functions
-function showBank(){
- document.getElementById('paymentInfo').innerHTML=
- 'Банкова сметка: <br>IBAN: BG02UNCR70001522527069<br>Име: Антоанета Кънева';
-}
-
-function showRevolut(){
- document.getElementById('paymentInfo').innerHTML=
- 'Revolut: @antoan2vle';
-}
 </script>
 
 </body>
