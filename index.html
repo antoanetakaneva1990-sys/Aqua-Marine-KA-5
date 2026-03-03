@@ -141,10 +141,20 @@ button:hover{ transform:scale(1.05); }
 
 #lightbox-controls button{
   background:#0f6a6a;
+  color:white;
+  border:none;
+  padding:12px;
+  font-size:18px;
   border-radius:50%;
+  cursor:pointer;
   width:50px;
   height:50px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
+
+#lightbox-controls button:hover{ transform:scale(1.05); }
 
 .map-container{
   width:100%;
@@ -153,14 +163,35 @@ button:hover{ transform:scale(1.05); }
   overflow:hidden;
 }
 
-.payment-box{
-  margin-top:20px;
-  padding:15px;
-  background:#f2f2f2;
-  border-radius:12px;
+.copy-btn{
+  background:#0f6a6a;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-left:5px;
+  font-size:14px;
 }
 
+.copy-btn:hover{ background:#066060; }
+
 @keyframes fadeIn{ to{opacity:1;} }
+
+@media (max-width:768px){
+  header h1{ font-size:2.5rem; }
+  header p{ font-size:1rem; }
+  .gallery img{ height:140px; }
+  .card{ padding:20px; }
+  h2{ font-size:1.7rem; }
+}
+
+@media (max-width:480px){
+  header h1{ font-size:2rem; }
+  header p{ font-size:0.95rem; }
+  .gallery img{ height:120px; }
+  h2{ font-size:1.5rem; }
+}
 </style>
 </head>
 
@@ -178,16 +209,19 @@ button:hover{ transform:scale(1.05); }
 
 <div class="container">
 
+<!-- ABOUT -->
 <div class="card">
 <h2 id="aboutTitle"></h2>
 <p id="aboutText"></p>
 </div>
 
+<!-- PRICES -->
 <div class="card">
 <h2 id="pricesTitle"></h2>
 <p id="pricesText"></p>
 </div>
 
+<!-- GALLERY -->
 <div class="card">
 <h2 id="galleryTitle"></h2>
 <div class="gallery" id="gallery"></div>
@@ -202,31 +236,50 @@ button:hover{ transform:scale(1.05); }
 </div>
 </div>
 
+<!-- BOOKING -->
 <div class="card">
 <h2 id="bookingTitle"></h2>
-
 <label id="checkinLabel"></label>
 <input type="date" id="checkin" class="input-field">
 
 <label id="nightsLabel"></label>
 <input type="number" id="nights" min="1" value="1" class="input-field">
 
-<p id="priceResult" style="font-weight:600;"></p>
+<p id="priceResult" style="font-weight:600;margin-top:10px;"></p>
 <p id="depositResult" style="font-weight:600;"></p>
 
-<div class="payment-box">
-<p><strong>Плащане на депозит:</strong></p>
+<h3>Плащане на депозит</h3>
+<p>Банкова сметка: <strong>BG02UNCR70001522527069 – Антоанета Кънева</strong> 
+<button class="copy-btn" onclick="copyText('BG02UNCR70001522527069 – Антоанета Кънева')">Копирай</button></p>
 
-<p>
-IBAN: <strong id="ibanText">BG02UNCR70001522527069</strong>
-<button onclick="copyIBAN()">Копирай</button>
-</p>
+<p>Revolut: <strong>@antoan2vle</strong> 
+<button class="copy-btn" onclick="copyText('@antoan2vle')">Копирай</button></p>
 
-<p>Титуляр: Антоанета Кънева</p>
-
-<button onclick="showRevolut()">Плати чрез Revolut (@antoan2vle)</button>
+<p>Основание за плащане: <span id="paymentRef"></span> 
+<button class="copy-btn" onclick="copyText(document.getElementById('paymentRef').innerText)">Копирай</button></p>
 </div>
 
+<!-- ACCOMMODATION -->
+<div class="card">
+<h2>НАСТАНЯВАНЕ</h2>
+<p>Настаняване: 14:00</p>
+<p>Напускане: 10:00</p>
+</div>
+
+<!-- CONTACT -->
+<div class="card">
+<h2 id="contactTitle"></h2>
+<p id="contactText"></p>
+<p>🌐 <a href="https://www.facebook.com/share/17wdG6LS9p/?mibextid=wwXIfr" target="_blank">Фейсбук страница</a></p>
+</div>
+
+<!-- MAP -->
+<div class="card">
+<h2 id="mapTitle"></h2>
+<div class="map-container">
+<iframe src="https://www.google.com/maps?q=40.8517289,24.3140363&z=16&output=embed"
+width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
+</div>
 </div>
 
 </div>
@@ -236,28 +289,44 @@ const t={
 bg:{
 subtitle:"Луксозен апартамент в Неа Перамос • 2 км от яхтеното пристанище на Ираклица",
 aboutTitle:"ЗА АПАРТАМЕНТА",
-about:"Луксозен апартамент с двор, паркомясто и близост до плажовете Амолофи.",
+about:`Потопете се в свят на спокойствие и изискан морски комфорт.
+
+Aqua Marine KA5 е идеален за семейство от 4 човека, с двор 20 м² за малки деца. Има собствено парко място.
+
+Разположен на около 2 км от яхтеното пристанище на Ираклица и близо до емблематичните плажове Амолофи и Тюркоазените води. Стилен интериор, простор и внимание към всеки детайл. Тераса с барбекю, светлина, стил и усещане за премиум почивка край морето.`,
 pricesTitle:"ЦЕНИ",
-prices:"Под 5 нощувки: 160€/вечер<br>5 или повече нощувки: 150€/вечер",
+prices:`Под 5 нощувки: 160€/вечер<br>5 или повече нощувки: 150€/вечер`,
 bookingTitle:"РЕЗЕРВАЦИЯ",
 checkin:"Дата на настаняване:",
 nights:"Брой нощувки:",
 priceLabel:"Обща цена за престой:",
 depositLabel:"Общ депозит (20%):",
-galleryTitle:"ГАЛЕРИЯ"
+payBtn:"ПЛАТИ ДЕПОЗИТ",
+galleryTitle:"ГАЛЕРИЯ",
+contactTitle:"КОНТАКТИ",
+contactText:`📧 Имейл: antoaneta_n_k@yahoo.dk<br>📞 Телефон: 00359876644933`,
+mapTitle:"ЛОКАЦИЯ"
 },
 en:{
 subtitle:"Luxury apartment in Nea Peramos • 2 km from Iraklitsa Marina",
 aboutTitle:"ABOUT THE APARTMENT",
-about:"Luxury apartment with yard, parking and proximity to Amolofi beaches.",
+about:`Step into a world of calm, elegance and seaside comfort.
+
+Aqua Marine KA5 is perfect for a family of 4, with a 20 m² yard for small children. Includes private parking space.
+
+Located about 2 km from Iraklitsa Marina and close to the iconic beaches Amolofi and Turquoise waters. Stylish interior, space and attention to every detail. BBQ terrace, light, style and premium seaside holiday feeling.`,
 pricesTitle:"PRICES",
-prices:"Less than 5 nights: 160€/night<br>5+ nights: 150€/night",
+prices:`Less than 5 nights: 160€/night<br>5+ nights: 150€/night`,
 bookingTitle:"BOOKING",
 checkin:"Check-in date:",
 nights:"Number of nights:",
 priceLabel:"Total stay price:",
 depositLabel:"Total deposit (20%):",
-galleryTitle:"GALLERY"
+payBtn:"PAY DEPOSIT",
+galleryTitle:"GALLERY",
+contactTitle:"CONTACTS",
+contactText:`📧 Email: antoaneta_n_k@yahoo.dk<br>📞 Phone: 00359876644933`,
+mapTitle:"LOCATION"
 }
 };
 
@@ -273,7 +342,11 @@ function setLang(lang){
  document.getElementById('checkinLabel').innerHTML=t[lang].checkin;
  document.getElementById('nightsLabel').innerHTML=t[lang].nights;
  document.getElementById('bookingTitle').innerHTML=t[lang].bookingTitle;
+ document.getElementById('payBtn').innerHTML=t[lang].payBtn;
  document.getElementById('galleryTitle').innerHTML=t[lang].galleryTitle;
+ document.getElementById('contactTitle').innerHTML=t[lang].contactTitle;
+ document.getElementById('contactText').innerHTML=t[lang].contactText;
+ document.getElementById('mapTitle').innerHTML=t[lang].mapTitle;
  updatePrice();
 }
 
@@ -289,19 +362,54 @@ function updatePrice(){
    t[currentLang].priceLabel+" "+total+"€";
  document.getElementById('depositResult').innerHTML=
    t[currentLang].depositLabel+" "+deposit.toFixed(2)+"€";
+
+ // Генерираме основание за плащане
+ const checkin=document.getElementById('checkin').value || 'дата';
+ document.getElementById('paymentRef').innerText=`Депозит ${checkin} – ${nights} нощувки – Aqua Marine KA5`;
 }
 
 document.getElementById('nights').addEventListener('input',updatePrice);
+document.getElementById('checkin').addEventListener('input',updatePrice);
 updatePrice();
 
-function copyIBAN(){
- const text=document.getElementById("ibanText").innerText;
- navigator.clipboard.writeText(text);
- alert("IBAN копиран: "+text);
+// Gallery
+const gallery=document.getElementById('gallery');
+for(let i=1;i<=19;i++){
+ const img=document.createElement('img');
+ img.src='img'+i+'.jpg';
+ img.dataset.index=i-1;
+ gallery.appendChild(img);
 }
 
-function showRevolut(){
- alert("Изпратете депозита чрез Revolut към: @antoan2vle");
+let images=document.querySelectorAll('#gallery img');
+let currentIndex=0;
+
+images.forEach(img=>{
+ img.onclick=()=>{
+  currentIndex=parseInt(img.dataset.index);
+  document.getElementById('lightbox').style.display='flex';
+  document.getElementById('lightbox-img').src=img.src;
+ };
+});
+
+function closeLightbox(){document.getElementById('lightbox').style.display='none';}
+function prevImage(){currentIndex=(currentIndex-1+images.length)%images.length;document.getElementById('lightbox-img').src=images[currentIndex].src;}
+function nextImage(){currentIndex=(currentIndex+1)%images.length;document.getElementById('lightbox-img').src=images[currentIndex].src;}
+
+function revealOnScroll(){
+ const cards=document.querySelectorAll('.card');
+ const triggerBottom=window.innerHeight*0.85;
+ cards.forEach(card=>{
+   const top=card.getBoundingClientRect().top;
+   if(top<triggerBottom) card.classList.add('visible');
+ });
+}
+window.addEventListener('scroll',revealOnScroll);
+window.addEventListener('load',revealOnScroll);
+
+// Копиране на текст
+function copyText(text){
+ navigator.clipboard.writeText(text).then(()=>alert('Копирано!'));
 }
 </script>
 
