@@ -6,8 +6,6 @@
 <title>Aqua Marine KA5</title>
 
 <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-<script src="https://js.stripe.com/v3/"></script>
-
 <style>
 body{
   margin:0;
@@ -144,15 +142,10 @@ button:hover{ transform:scale(1.05); }
   background:#0f6a6a;
   color:white;
   border:none;
-  padding:12px;
+  padding:12px 20px;
   font-size:18px;
-  border-radius:50%;
+  border-radius:8px;
   cursor:pointer;
-  width:50px;
-  height:50px;
-  display:flex;
-  justify-content:center;
-  align-items:center;
 }
 
 #lightbox-controls button:hover{ transform:scale(1.05); }
@@ -162,6 +155,41 @@ button:hover{ transform:scale(1.05); }
   height:400px;
   border-radius:14px;
   overflow:hidden;
+}
+
+.payment-section{
+  margin-top:20px;
+  padding:15px;
+  background:#f0f0f0;
+  border-radius:12px;
+}
+
+.payment-section p{
+  margin:8px 0;
+}
+
+.copy-btn{
+  background:#0f6a6a;
+  color:white;
+  border:none;
+  padding:6px 12px;
+  font-size:14px;
+  border-radius:6px;
+  cursor:pointer;
+  margin-left:10px;
+}
+
+.copy-btn:hover{ transform:scale(1.05); }
+
+.revolut-btn{
+  background:#0f6a6a;
+  color:white;
+  border:none;
+  padding:12px 22px;
+  font-size:15px;
+  border-radius:8px;
+  cursor:pointer;
+  margin-top:10px;
 }
 
 @keyframes fadeIn{ to{opacity:1;} }
@@ -197,16 +225,19 @@ button:hover{ transform:scale(1.05); }
 
 <div class="container">
 
+<!-- About -->
 <div class="card">
 <h2 id="aboutTitle"></h2>
 <p id="aboutText"></p>
 </div>
 
+<!-- Prices -->
 <div class="card">
 <h2 id="pricesTitle"></h2>
 <p id="pricesText"></p>
 </div>
 
+<!-- Gallery -->
 <div class="card">
 <h2 id="galleryTitle"></h2>
 <div class="gallery" id="gallery"></div>
@@ -221,6 +252,7 @@ button:hover{ transform:scale(1.05); }
 </div>
 </div>
 
+<!-- Booking -->
 <div class="card">
 <h2 id="bookingTitle"></h2>
 <label id="checkinLabel"></label>
@@ -232,21 +264,26 @@ button:hover{ transform:scale(1.05); }
 <p id="priceResult" style="font-weight:600;margin-top:10px;"></p>
 <p id="depositResult" style="font-weight:600;"></p>
 
-<button id="payBtn"></button>
+<!-- Payment Section -->
+<div class="payment-section">
+<p>Банков превод:</p>
+<p>IBAN: <span id="iban">BG02UNCR70001522527069</span>
+<button class="copy-btn" onclick="copyIBAN()">Копирай IBAN</button></p>
+<p>Титуляр: Антоанета Кънева</p>
+
+<p>Revolut: <button class="revolut-btn" onclick="alert('Revolut линк: @antoan2vle')">Плати чрез Revolut</button></p>
 </div>
 
-<div class="card">
-<h2>НАСТАНЯВАНЕ</h2>
-<p>Настаняване: 14:00</p>
-<p>Напускане: 10:00</p>
 </div>
 
+<!-- Contacts -->
 <div class="card">
 <h2 id="contactTitle"></h2>
 <p id="contactText"></p>
 <p>🌐 <a href="https://www.facebook.com/share/17wdG6LS9p/?mibextid=wwXIfr" target="_blank">Фейсбук страница</a></p>
 </div>
 
+<!-- Map -->
 <div class="card">
 <h2 id="mapTitle"></h2>
 <div class="map-container">
@@ -258,14 +295,13 @@ width="100%" height="100%" style="border:0;" allowfullscreen></iframe>
 </div>
 
 <script>
+// Language
 const t={
 bg:{
 subtitle:"Луксозен апартамент в Неа Перамос • 2 км от яхтеното пристанище на Ираклица",
 aboutTitle:"ЗА АПАРТАМЕНТА",
-about:`Потопете се в свят на спокойствие и изискан морски комфорт.
-
-Aqua Marine KA5 е идеален за семейство от 4 човека, с двор 20 м² за малки деца. Има собствено парко място.
-
+about:`Потопете се в свят на спокойствие и изискан морски комфорт.  
+Aqua Marine KA5 е идеален за семейство от 4 човека, с двор 20 м² за малки деца. Има собствено парко място.  
 Разположен на около 2 км от яхтеното пристанище на Ираклица и близо до емблематичните плажове Амолофи и Тюркоазените води. Стилен интериор, простор и внимание към всеки детайл. Тераса с барбекю, светлина, стил и усещане за премиум почивка край морето.`,
 pricesTitle:"ЦЕНИ",
 prices:`Под 5 нощувки: 160€/вечер<br>5 или повече нощувки: 150€/вечер`,
@@ -283,10 +319,8 @@ mapTitle:"ЛОКАЦИЯ"
 en:{
 subtitle:"Luxury apartment in Nea Peramos • 2 km from Iraklitsa Marina",
 aboutTitle:"ABOUT THE APARTMENT",
-about:`Step into a world of calm, elegance and seaside comfort.
-
-Aqua Marine KA5 is perfect for a family of 4, with a 20 m² yard for small children. Includes private parking space.
-
+about:`Step into a world of calm, elegance and seaside comfort.  
+Aqua Marine KA5 is perfect for a family of 4, with a 20 m² yard for small children. Includes private parking space.  
 Located about 2 km from Iraklitsa Marina and close to the iconic beaches Amolofi and Turquoise waters. Stylish interior, space and attention to every detail. BBQ terrace, light, style and premium seaside holiday feeling.`,
 pricesTitle:"PRICES",
 prices:`Less than 5 nights: 160€/night<br>5+ nights: 150€/night`,
@@ -304,7 +338,6 @@ mapTitle:"LOCATION"
 };
 
 let currentLang='bg';
-
 function setLang(lang){
  currentLang=lang;
  document.getElementById('subtitle').innerHTML=t[lang].subtitle;
@@ -322,23 +355,28 @@ function setLang(lang){
  document.getElementById('mapTitle').innerHTML=t[lang].mapTitle;
  updatePrice();
 }
-
 setLang('bg');
 
+// Price Calculator
 function updatePrice(){
  const nights=parseInt(document.getElementById('nights').value)||0;
  const pricePerNight=nights>=5?150:160;
  const total=nights*pricePerNight;
  const deposit=total*0.2;
-
  document.getElementById('priceResult').innerHTML=
    t[currentLang].priceLabel+" "+total+"€";
  document.getElementById('depositResult').innerHTML=
    t[currentLang].depositLabel+" "+deposit.toFixed(2)+"€";
 }
-
 document.getElementById('nights').addEventListener('input',updatePrice);
 updatePrice();
+
+// Copy IBAN
+function copyIBAN(){
+ const ibanText=document.getElementById('iban').textContent;
+navigator.clipboard.writeText(ibanText);
+alert('IBAN копиран: '+ibanText);
+}
 
 // Gallery
 const gallery=document.getElementById('gallery');
@@ -351,7 +389,6 @@ for(let i=1;i<=19;i++){
 
 let images=document.querySelectorAll('#gallery img');
 let currentIndex=0;
-
 images.forEach(img=>{
  img.onclick=()=>{
   currentIndex=parseInt(img.dataset.index);
@@ -364,6 +401,7 @@ function closeLightbox(){document.getElementById('lightbox').style.display='none
 function prevImage(){currentIndex=(currentIndex-1+images.length)%images.length;document.getElementById('lightbox-img').src=images[currentIndex].src;}
 function nextImage(){currentIndex=(currentIndex+1)%images.length;document.getElementById('lightbox-img').src=images[currentIndex].src;}
 
+// Scroll animation
 function revealOnScroll(){
  const cards=document.querySelectorAll('.card');
  const triggerBottom=window.innerHeight*0.85;
