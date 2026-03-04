@@ -212,7 +212,7 @@ button:hover{ transform:scale(1.05); }
 <p id="pricesText"></p>
 </div>
 
-<!-- Комбинирана секция РЕЗЕРВАЦИЯ + ПЛАЩАНЕ -->
+<!-- Комбинирана секция РЕЗЕРВАЦИЯ + ПЛАЩАНЕ без бутон Плати депозит -->
 <div class="card">
 <h2 id="bookingTitle"></h2>
 
@@ -224,8 +224,6 @@ button:hover{ transform:scale(1.05); }
 
 <p id="priceResult" style="font-weight:600;margin-top:10px;"></p>
 <p id="depositResult" style="font-weight:600;"></p>
-
-<button id="payBtn"></button>
 
 <hr style="margin:20px 0; border:none; border-top:1px solid #cfcfcf;">
 
@@ -273,7 +271,6 @@ checkin:"Дата на настаняване:",
 nights:"Брой нощувки:",
 priceLabel:"Обща цена за престой:",
 depositLabel:"Общ депозит (20%):",
-payBtn:"ПЛАТИ ДЕПОЗИТ",
 paymentText:"Изберете начин на плащане:",
 bankBtn:"Банкова сметка",
 revolutBtn:"Revolut",
@@ -299,7 +296,6 @@ checkin:"Check-in date:",
 nights:"Number of nights:",
 priceLabel:"Total stay price:",
 depositLabel:"Total deposit (20%):",
-payBtn:"PAY DEPOSIT",
 paymentText:"Choose payment method:",
 bankBtn:"Bank account",
 revolutBtn:"Revolut",
@@ -324,7 +320,6 @@ function setLang(lang){
  document.getElementById('checkinLabel').innerHTML=t[lang].checkin;
  document.getElementById('nightsLabel').innerHTML=t[lang].nights;
  document.getElementById('bookingTitle').innerHTML=t[lang].bookingTitle;
- document.getElementById('payBtn').innerHTML=t[lang].payBtn;
  document.getElementById('paymentText').innerHTML=t[lang].paymentText;
  document.getElementById('bankBtn').innerHTML=t[lang].bankBtn;
  document.getElementById('revolutBtn').innerHTML=t[lang].revolutBtn;
