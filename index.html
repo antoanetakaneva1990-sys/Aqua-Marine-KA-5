@@ -275,4 +275,18 @@ subtitle:'Luxury apartment · Nea Peramos, Greece · 80m from the sea',
 };
 function setLang(l){
   currentLang=l;
-  document.getElementById('blg
+  document.getElementById('blg').classList.toggle('on',l==='bg');
+  document.getElementById('ben').classList.toggle('on',l==='en');
+  var t=T[l];
+  document.getElementById('subtitle').textContent=t.subtitle;
+  for(var id in t){var el=document.getElementById(id);if(!el)continue;if(el.tagName==='INPUT')el.placeholder=t[id];else el.innerHTML=t[id];}
+  calcPrice();
+}
+window.addEventListener('DOMContentLoaded', function(){
+  setLang('bg');
+  calcPrice();
+  reveal();
+});
+</script>
+</body>
+</html>
