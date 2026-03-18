@@ -424,6 +424,8 @@
       border-radius: 2px;
       cursor: pointer;
       position: relative;
+      touch-action: manipulation;
+      -webkit-tap-highlight-color: rgba(196,150,122,0.3);
     }
     .g-item img {
       width: 100%;
@@ -1452,9 +1454,10 @@ setTimeout(() => e.target.classList.add(‘visible’), i * 80);
 }, { threshold: 0.1 });
 document.querySelectorAll(’.reveal’).forEach(el => observer.observe(el));
 
-// Lightbox
+// Lightbox - mobile & desktop
 function openLightbox(el) {
-document.getElementById(‘lightbox-img’).src = el.querySelector(‘img’).src;
+var src = el.querySelector(‘img’).src;
+document.getElementById(‘lightbox-img’).src = src;
 document.getElementById(‘lightbox’).classList.add(‘open’);
 document.body.style.overflow = ‘hidden’;
 }
@@ -1462,7 +1465,21 @@ function closeLightbox() {
 document.getElementById(‘lightbox’).classList.remove(‘open’);
 document.body.style.overflow = ‘’;
 }
-document.addEventListener(‘keydown’, e => { if (e.key === ‘Escape’) closeLightbox(); });
+document.addEventListener(‘keydown’, function(e) { if (e.key === ‘Escape’) closeLightbox(); });
+
+// Add touch support for gallery items
+document.addEventListener(‘DOMContentLoaded’, function() {
+document.querySelectorAll(’.g-item’).forEach(function(item) {
+item.addEventListener(‘touchend’, function(e) {
+e.preventDefault();
+openLightbox(this);
+});
+});
+document.getElementById(‘lightbox’).addEventListener(‘touchend’, function(e) {
+e.preventDefault();
+closeLightbox();
+});
+});
 
 // Form
 function submitForm(e) {
