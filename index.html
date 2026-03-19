@@ -410,4 +410,15 @@ setStars(5);
 function submitReview(e){
   e.preventDefault();
   document.getElementById('rok').style.display='block';
-  e.ta
+  e.target.reset();
+  setStars(5);
+  setTimeout(function(){ document.getElementById('rok').style.display='none'; }, 5000);
+}
+window.addEventListener('DOMContentLoaded', function(){
+  setLang('bg');
+  calcPrice();
+  reveal();
+});
+</script>
+</body>
+</html>
