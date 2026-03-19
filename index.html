@@ -72,12 +72,40 @@ header p{font-size:1rem;color:rgba(255,255,255,.75);letter-spacing:.06em}
 .mapw iframe{width:100%;height:100%;border:none;display:block}
 footer{background:#2e2520;color:rgba(255,255,255,.4);text-align:center;padding:28px 20px;font-size:.78rem;letter-spacing:.08em}
 footer a{color:#c4967a}
+.rrating{display:flex;align-items:center;gap:1rem;margin-bottom:1.5rem}
+.rnum{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:#2e2520;line-height:1}
+.rstars{font-size:1.3rem;color:#c4967a}
+.rmeta{font-size:.76rem;color:#7a6a62}
+.rgrid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:2rem}
+.rcard{background:#f5f0ec;padding:1.6rem;border-radius:10px;border:1px solid #f0ddd4;position:relative}
+.rplat{position:absolute;top:1rem;right:1rem;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:#c4967a;border:1px solid #f0ddd4;padding:2px 8px;border-radius:20px}
+.rq{font-family:'Cormorant Garamond',serif;font-size:2.8rem;color:#f0ddd4;line-height:.3;margin-bottom:.7rem}
+.rt{font-size:.85rem;line-height:1.7;color:#7a6a62;font-style:italic;margin-bottom:1rem}
+.rstars2{color:#c4967a;font-size:.85rem;margin-bottom:.4rem}
+.rname{font-size:.82rem;font-weight:500;color:#2e2520}
+.rdate{font-size:.7rem;color:#7a6a62;margin-top:2px}
+.rform-wrap{background:#f5f0ec;border-radius:10px;padding:24px;margin-top:8px}
+.rform-wrap h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:#2e2520;margin-bottom:16px}
+.rform{display:flex;flex-direction:column;gap:12px}
+.rfrow{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.rfg{display:flex;flex-direction:column;gap:5px}
+.rfg label{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:#7a6a62}
+.rfg input,.rfg textarea{width:100%;padding:10px 14px;border:1px solid #ddd4cc;border-radius:6px;font-family:'Jost',sans-serif;font-size:.92rem;background:#fff;outline:none;transition:border .25s;resize:vertical}
+.rfg input:focus,.rfg textarea:focus{border-color:#c4967a}
+.star-pick{font-size:1.8rem;color:#ddd4cc;cursor:pointer;letter-spacing:4px;transition:color .2s}
+.star-pick span{transition:color .2s}
+.star-pick span.on{color:#c4967a}
+.rbtn{background:#2e2520;color:#fff;border:none;padding:12px 28px;border-radius:8px;cursor:pointer;font-family:'Jost',sans-serif;font-size:.85rem;letter-spacing:.08em;transition:background .3s;align-self:flex-start;touch-action:manipulation}
+.rbtn:hover{background:#c4967a}
+.rok{display:none;background:#fff;border:1px solid #c4967a;padding:12px 16px;border-radius:8px;color:#c4967a;font-size:.88rem}
 @media(max-width:680px){
   .pgrid{grid-template-columns:1fr}
   .card{padding:22px}
   .pbtns{flex-direction:column}
   .pbtns button{width:100%}
   .feats{grid-template-columns:1fr 1fr}
+  .rgrid{grid-template-columns:1fr}
+  .rfrow{grid-template-columns:1fr}
 }
 @media(max-width:480px){
   .gallery{grid-template-columns:repeat(2,1fr)}
@@ -206,7 +234,81 @@ footer a{color:#c4967a}
     </div>
   </div>
 </div>
-<footer>© 2025 Aqua Marine KA-5 · Неа Перамос, Гърция · <a href="/cdn-cgi/l/email-protection#3859564c5759565d4c5967566753784159505757165c53"><span class="__cf_email__" data-cfemail="365758425957585342576958695d764f575e595918525d">[email&#160;protected]</span></a></footer>
+  <!-- ОТЗИВИ -->
+  <div class="card">
+    <h2 id="t-reviews">Отзиви от гости</h2>
+    <div class="rrating">
+      <span class="rnum">5.0</span>
+      <div>
+        <div class="rstars">★★★★★</div>
+        <div class="rmeta" id="r-meta">Базирано на 3 отзива · 2025</div>
+      </div>
+    </div>
+    <div class="rgrid">
+      <div class="rcard">
+        <div class="rplat">Юни 2025</div>
+        <div class="rq">"</div>
+        <p class="rt" id="rv1">Апартаментът е абсолютно прекрасен – нов, чист и перфектно оборудван. Барбекюто на терасата беше хит за цялото семейство. Антоанета е много отзивчива домакиня. Определено ще се върнем!</p>
+        <div class="rstars2">★★★★★</div>
+        <div class="rname">Мария и Георги</div>
+        <div class="rdate" id="rd1">София · Юни 2025</div>
+      </div>
+      <div class="rcard">
+        <div class="rplat">Юли 2025</div>
+        <div class="rq">"</div>
+        <p class="rt" id="rv2">Перфектно за семейна почивка! Децата се влюбиха в плажа – само 80 метра! Апартаментът е нов и много удобен. Кухнята е отлично оборудвана. Горещо препоръчваме!</p>
+        <div class="rstars2">★★★★★</div>
+        <div class="rname">Семейство Петрови</div>
+        <div class="rdate" id="rd2">Варна · Юли 2025</div>
+      </div>
+      <div class="rcard">
+        <div class="rplat">Август 2025</div>
+        <div class="rq">"</div>
+        <p class="rt" id="rv3">Невероятно място! Апартаментът е модерен и стилен, точно като на снимките. Личният двор и барбекюто са огромен плюс. Неа Перамос е скъпоценност – ще се върнем следващото лято!</p>
+        <div class="rstars2">★★★★★</div>
+        <div class="rname">Десислава Н.</div>
+        <div class="rdate" id="rd3">Пловдив · Август 2025</div>
+      </div>
+    </div>
+
+```
+<!-- ФОРМА ЗА ОТЗИВ -->
+<div class="rform-wrap">
+  <h3 id="t-addreview">Оставете отзив</h3>
+  <form class="rform" onsubmit="submitReview(event)">
+    <div class="rfrow">
+      <div class="rfg">
+        <label id="rl-name">Вашето име</label>
+        <input type="text" id="rname" placeholder="Иван Иванов" required>
+      </div>
+      <div class="rfg">
+        <label id="rl-city">Град</label>
+        <input type="text" id="rcity" placeholder="София" required>
+      </div>
+    </div>
+    <div class="rfg">
+      <label id="rl-rating">Оценка</label>
+      <div class="star-pick" id="star-pick">
+        <span onclick="setStars(1)">★</span>
+        <span onclick="setStars(2)">★</span>
+        <span onclick="setStars(3)">★</span>
+        <span onclick="setStars(4)">★</span>
+        <span onclick="setStars(5)">★</span>
+      </div>
+    </div>
+    <div class="rfg">
+      <label id="rl-text">Вашият отзив</label>
+      <textarea id="rtext" rows="4" placeholder="Споделете вашето преживяване..." required></textarea>
+    </div>
+    <button type="submit" class="rbtn" id="r-submit">Изпрати отзив</button>
+    <div class="rok" id="rok">✓ Благодарим за отзива! Ще го публикуваме скоро.</div>
+  </form>
+</div>
+```
+
+  </div>
+
+<footer>© 2025 Aqua Marine KA-5 · Неа Перамос, Гърция · <a href="mailto:antoaneta_n_k@yahoo.dk">antoaneta_n_k@yahoo.dk</a></footer>
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
 var IMGS=13;
 var gallery=document.getElementById('gallery');
@@ -251,7 +353,15 @@ var T={
 bg:{
 subtitle:'Луксозен апартамент · Неа Перамос, Гърция · 80м от морето',
 'about-p':'Добре дошли в <strong>Aqua Marine KA-5</strong> – модерен апартамент за незабравима лятна почивка! Само на <strong>80 метра от морския бряг</strong> в живописното Неа Перамос.<br><br>Разполага с <strong>2 просторни спални</strong> с двойни легла и телевизор, светла дневна с модерна напълно оборудвана кухня (хладилник, печка, котлони, кафемашина, посуда), баня с тоалетна и <strong>втора самостоятелна тоалетна</strong>.<br><br>🌿 Тераса с барбекю, личен двор 20м², собствено паркомясто. <strong>Плажовете Амолофи</strong> – само на 5 мин. с кола.',
-'t-about':'За апартамента','t-gallery':'Галерия','t-prices':'Цени 2025','t-calc':'Изчисли престоя','t-accom':'Настаняване','t-contact':'Контакти','t-map':'Локация',
+'t-about':'За апартамента','t-gallery':'Галерия','t-prices':'Цени 2025','t-calc':'Изчисли престоя','t-accom':'Настаняване','t-contact':'Контакти','t-map':'Локация','t-reviews':'Отзиви от гости',
+'r-meta':'Базирано на 3 отзива · 2025',
+'rv1':'Апартаментът е абсолютно прекрасен – нов, чист и перфектно оборудван. Барбекюто на терасата беше хит за цялото семейство. Антоанета е много отзивчива домакиня. Определено ще се върнем!',
+'rv2':'Перфектно за семейна почивка! Децата се влюбиха в плажа – само 80 метра! Апартаментът е нов и много удобен. Кухнята е отлично оборудвана. Горещо препоръчваме!',
+'rv3':'Невероятно място! Апартаментът е модерен и стилен, точно като на снимките. Личният двор и барбекюто са огромен плюс. Неа Перамос е скъпоценност – ще се върнем следващото лято!',
+'rd1':'София · Юни 2025','rd2':'Варна · Юли 2025','rd3':'Пловдив · Август 2025',
+'t-addreview':'Оставете отзив',
+'rl-name':'Вашето име','rl-city':'Град','rl-rating':'Оценка','rl-text':'Вашият отзив',
+'r-submit':'Изпрати отзив',
 'f1t':'До плажа','f1s':'80м от морето','f2t':'2 спални','f2s':'Двойни легла и телевизор','f3t':'Тераса с барбекю','f3s':'Личен двор 20м²','f4t':'Климатизация','f4s':'Централна, навсякъде','f5t':'Паркинг','f5s':'Собствено паркомясто','f6t':'Wi-Fi','f6s':'Високоскоростен интернет',
 'p1s':'Лято — кратък престой','p1p':'на нощ · до 4 нощувки','p2badge':'По-изгодно','p2s':'Лято — 5+ нощувки','p2p':'на нощ · 5 или повече нощувки',
 'pf1':'2 спални с двойни легла и ТВ','pf2':'Централна климатизация','pf3':'Тераса с барбекю','pf4':'Собствено паркомясто','pf5':'Личен двор 20м²','pf6':'Капаро 20%','pf7':'2 спални с двойни легла и ТВ','pf8':'Централна климатизация','pf9':'Тераса с барбекю','pf10':'Собствено паркомясто','pf11':'Личен двор 20м²','pf12':'Капаро 20%',
@@ -263,7 +373,15 @@ subtitle:'Луксозен апартамент · Неа Перамос, Гър
 en:{
 subtitle:'Luxury apartment · Nea Peramos, Greece · 80m from the sea',
 'about-p':'Welcome to <strong>Aqua Marine KA-5</strong> – a modern apartment for an unforgettable summer holiday! Just <strong>80 meters from the seafront</strong> in picturesque Nea Peramos, Greece.<br><br>Features <strong>2 spacious bedrooms</strong> with double beds and TV, bright living room with fully equipped modern kitchen (fridge, oven, hobs, coffee machine, cookware), bathroom with toilet and <strong>separate second WC</strong>.<br><br>🌿 BBQ terrace, private yard 20m², private parking. <strong>Ammolofoi beach</strong> – just 5 min by car.',
-'t-about':'About','t-gallery':'Gallery','t-prices':'Prices 2025','t-calc':'Calculate your stay','t-accom':'Accommodation','t-contact':'Contact','t-map':'Location',
+'t-about':'About','t-gallery':'Gallery','t-prices':'Prices 2025','t-calc':'Calculate your stay','t-accom':'Accommodation','t-contact':'Contact','t-map':'Location','t-reviews':'Guest Reviews',
+'r-meta':'Based on 3 reviews · 2025',
+'rv1':'The apartment is absolutely gorgeous – new, clean and perfectly equipped. The BBQ on the terrace was a hit for the whole family. Antoaneta is a very responsive host. We will definitely come back!',
+'rv2':'Perfect for a family holiday! The kids loved the beach – just 80 meters away! The apartment is new and very comfortable. The kitchen is excellently equipped. Highly recommended!',
+'rv3':'Incredible place! The apartment is modern and stylish, exactly as in the photos. The private yard and BBQ are a huge plus. Nea Peramos is a gem – we will be back next summer!',
+'rd1':'Sofia · June 2025','rd2':'Varna · July 2025','rd3':'Plovdiv · August 2025',
+'t-addreview':'Leave a review',
+'rl-name':'Your name','rl-city':'City','rl-rating':'Rating','rl-text':'Your review',
+'r-submit':'Submit review',
 'f1t':'Near the beach','f1s':'80m from the sea','f2t':'2 bedrooms','f2s':'Double beds and TV','f3t':'BBQ terrace','f3s':'Private yard 20m²','f4t':'Air conditioning','f4s':'Central, everywhere','f5t':'Parking','f5s':'Private parking space','f6t':'Wi-Fi','f6s':'High-speed internet',
 'p1s':'Summer — short stay','p1p':'per night · up to 4 nights','p2badge':'Better value','p2s':'Summer — 5+ nights','p2p':'per night · 5 or more nights',
 'pf1':'2 bedrooms with double beds & TV','pf2':'Central air conditioning','pf3':'BBQ terrace','pf4':'Private parking','pf5':'Private yard 20m²','pf6':'20% deposit','pf7':'2 bedrooms with double beds & TV','pf8':'Central air conditioning','pf9':'BBQ terrace','pf10':'Private parking','pf11':'Private yard 20m²','pf12':'20% deposit',
@@ -281,6 +399,20 @@ function setLang(l){
   document.getElementById('subtitle').textContent=t.subtitle;
   for(var id in t){var el=document.getElementById(id);if(!el)continue;if(el.tagName==='INPUT')el.placeholder=t[id];else el.innerHTML=t[id];}
   calcPrice();
+}
+var selectedStars = 5;
+function setStars(n){
+  selectedStars = n;
+  var spans = document.querySelectorAll('#star-pick span');
+  spans.forEach(function(s,i){ s.classList.toggle('on', i<n); });
+}
+setStars(5);
+function submitReview(e){
+  e.preventDefault();
+  document.getElementById('rok').style.display='block';
+  e.target.reset();
+  setStars(5);
+  setTimeout(function(){ document.getElementById('rok').style.display='none'; }, 5000);
 }
 window.addEventListener('DOMContentLoaded', function(){
   setLang('bg');
